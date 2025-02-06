@@ -36,7 +36,7 @@ export default function Header() {
       </div>
 
       {/* nav header */}
-      <div className="w-full px-4 py-3 bg-white">
+      <div className="w-full px-4 py-3 lg:py-6 bg-white">
         {/* Logo and Hamburger */}
         <div className="lg:max-w-[1240px] flex flex-row items-center justify-between mx-auto">
           <div className="flex items-center flex-row gap-[18px]">
@@ -69,7 +69,7 @@ export default function Header() {
           {/* Desktop Search Bar */}
           <div className="w-full max-w-[577px] h-12 relative lg:block hidden">
             <input
-              className="w-full h-full border border-black bg-[#F0F0F0] rounded-[62px] pl-12"
+              className="w-full h-full bg-[#F0F0F0] rounded-[62px] pl-12"
               type="text"
               placeholder="Search for products..."
             />
@@ -96,7 +96,7 @@ export default function Header() {
 
       {/* Mobile Search Dropdown */}
       <div
-        className={`w-full h-24 pb-2 bg-white px-4 relative z-30 lg:hidden overflow-hidden mx-2  
+        className={`w-full h-24 pb-2 bg-white px-4 relative z-10 lg:hidden overflow-hidden mx-2  
         ${searchOpen ? "max-h-14 animate-dropdown" : "max-h-0"}`}
       >
         <input
@@ -113,7 +113,7 @@ export default function Header() {
 
       {/* Dropdown Menu */}
       <ul
-        className={`absolute top-[80px] left-0 bg-[#F2F0F1] shadow-md sm:static sm:hidden flex items-center flex-col sm:flex-row gap-2 text-nowrap w-full 
+        className={`absolute top-[80px] left-0 z-30 bg-[#F2F0F1] shadow-md sm:static sm:hidden flex items-center flex-col sm:flex-row gap-2 text-nowrap w-full 
     ${menuOpen ? "block animate-dropdown" : "hidden"}`}
       >
         <li className="cursor-pointer text-[16px] leading-[21.6px] text-[#000000] py-2 sm:py-0">

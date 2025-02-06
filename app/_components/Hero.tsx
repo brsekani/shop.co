@@ -13,9 +13,9 @@ export default function Hero() {
   return (
     <div className="bg-[#F2F0F1] mt-[98px]">
       <div className="w-full md:h-[663px] cursor-default">
-        <div className="lg:max-w-[1240px] mx-auto md:h-[663px] h-fit flex flex-col md:flex-row justify-between gap-10">
+        <div className="lg:max-w-[1240px]  mx-auto md:h-[663px] h-fit flex flex-col md:flex-row justify-between gap-10">
           {/* Left section */}
-          <div className="w-full pt-8 lg:pt-0  lg:w-1/2 h-full flex items-center lg:items-start flex-col justify-center gap-12 px-4 md:px-0">
+          <div className="w-full pt-8 lg:pt-0 lg:w-1/2 h-full flex items-center lg:items-start flex-col justify-center gap-12 px-4 md:px-4 lg:px-0">
             {/* Add any content here if needed */}
             <div className="flex flex-col md:gap-8 gap-5 items-start">
               <h1 className="text-[32px] lg:text-[64px] leading-[40px] lg:leading-[64px] font-bold">
