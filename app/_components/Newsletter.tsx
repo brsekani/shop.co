@@ -16,7 +16,7 @@ const Newsletter = () => {
             <div className="relative">
               <input
                 type="email"
-                className="bg-white w-full rounded-[62px] my-2 lg:my-4 pl-10 py-3 placeholder:text-[14px] placeholder:text-[#00000066]"
+                className="bg-white w-full rounded-[62px] my-2 lg:my-4 pl-10 pr-6 py-3 placeholder:text-[14px] placeholder:text-[#00000066]"
                 name="email"
                 id="email"
                 placeholder="Enter your email address"
