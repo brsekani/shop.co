@@ -260,8 +260,8 @@ const Arrivals = () => {
               {/* end of single arrival */}
             </CarouselContent>
 
-            <CarouselPrevious className="mb-5" />
-            <CarouselNext className="mb-5" />
+            {/* <CarouselPrevious className="mb-5" /> */}
+            {/* <CarouselNext className="mb-5" /> */}
           </Carousel>
         </div>
 
