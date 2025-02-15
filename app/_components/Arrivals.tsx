@@ -23,8 +23,8 @@ const Arrivals = () => {
         </h1>
 
         {/* Arrivals */}
-        <div className="flex justify-center">
-          <Carousel className="max-w-[200px] sm:max-w-[400px] md:max-w-[600px] mx-auto lg:max-w-[1240px]">
+        <div className="flex justify-content">
+          <Carousel className="mx-4 max-w-[200px] sm:max-w-[400px] md:max-w-[600px] sm:mx-auto lg:max-w-[1240px]">
             <CarouselContent>
               {/* single arrival */}
               <CarouselItem className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 md:mr-6">
