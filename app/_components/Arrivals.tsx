@@ -14,254 +14,249 @@ import {
 
 const Arrivals = () => {
   return (
-    <div className="bg-white py-12 w-full">
+    <div className="py-12">
       <div>
         <h1 className="font-bold leading-[38.4px] text-[32px] text-center mb-8 text-black h-[38px] md:mb-10 lg:mb-12 lg:text-[48px] lg:leading-[57.6px]">
           NEW ARRIVALS
         </h1>
 
         {/* Arrivals */}
-        <div className="flex justify-content">
-          <Carousel className="mx-4 max-w-[200px] sm:max-w-[400px] md:max-w-[600px] sm:mx-auto lg:max-w-[1240px]">
-            <CarouselContent>
-              {/* single arrival */}
-              <CarouselItem className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 md:mr-6">
-                <div>
-                  <div className="bg-[#F0EEED] grid place-items-center h-[200px] lg:h-[220px] rounded-2xl">
-                    <Image
-                      src={blackRound}
-                      alt="cloth"
-                      width={150}
-                      height={120}
-                      className="object-cover rounded-[13.42px]"
-                    />
-                  </div>
-                  <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                    T-shirt with Tape Details
-                  </h5>
-                  <div className="flex gap-[11px] py-1 items-center">
-                    <div className="flex gap-[4.44px] items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Image
-                          key={i}
-                          src={rate}
-                          alt="star img"
-                          width={15.47}
-                          height={15.47}
-                          className="gap-[4.44px]"
-                        />
-                      ))}
-                    </div>
-
-                    <p className="text-[15px]">4.5/5</p>
-                  </div>
-                  <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                    $120
-                  </h6>
+        <Carousel className="ml-4 lg:mx-auto lg:max-w-[960px] xl:max-w-[1240px] ">
+          <CarouselContent className="gap-x-6">
+            {/* single arrival */}
+            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <div className="">
+                <div className="bg-[#F0EEED] grid place-items-center h-[200px] lg:h-[220px] rounded-2xl">
+                  <Image
+                    src={blackRound}
+                    alt="cloth"
+                    width={150}
+                    height={120}
+                    className="object-cover rounded-[13.42px]"
+                  />
                 </div>
-              </CarouselItem>
-              {/* end of single arrival */}
-
-              {/* single arrival */}
-              <CarouselItem className="md:mr-6 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                {" "}
-                <div>
-                  <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
-                    <Image
-                      src={fadedJean}
-                      alt="cloth"
-                      width={150}
-                      height={120}
-                      className="object-cover rounded-[13.42px]"
-                    />
+                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
+                  T-shirt with Tape Details
+                </h5>
+                <div className="flex gap-[11px] py-1 items-center">
+                  <div className="flex gap-[4.44px] items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Image
+                        key={i}
+                        src={rate}
+                        alt="star img"
+                        width={15.47}
+                        height={15.47}
+                        className="gap-[4.44px]"
+                      />
+                    ))}
                   </div>
-                  <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                    T-shirt with Tape Details
-                  </h5>
-                  <div className="flex gap-[11px] py-1 items-center">
-                    <div className="flex gap-[4.44px] items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Image
-                          key={i}
-                          src={rate}
-                          alt="star img"
-                          width={15.47}
-                          height={15.47}
-                          className="gap-[4.44px]"
-                        />
-                      ))}
-                    </div>
 
-                    <p className="text-[15px]">4.5/5</p>
-                  </div>
-                  <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                    $120
-                  </h6>
+                  <p className="text-[15px]">4.5/5</p>
                 </div>
-              </CarouselItem>
-              {/* end of single arrival */}
+                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
+                  $120
+                </h6>
+              </div>
+            </CarouselItem>
+            {/* end of single arrival */}
 
-              {/* single arrival */}
-              <CarouselItem className="md:mr-6 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                {" "}
-                <div>
-                  <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
-                    <Image
-                      src={Tshirt}
-                      alt="cloth"
-                      width={150}
-                      height={120}
-                      className="object-cover rounded-[13.42px]"
-                    />
-                  </div>
-                  <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                    T-shirt with Tape Details
-                  </h5>
-                  <div className="flex gap-[11px] py-1 items-center">
-                    <div className="flex gap-[4.44px] items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Image
-                          key={i}
-                          src={rate}
-                          alt="star img"
-                          width={15.47}
-                          height={15.47}
-                          className="gap-[4.44px]"
-                        />
-                      ))}
-                    </div>
-
-                    <p className="text-[15px]">4.5/5</p>
-                  </div>
-                  <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                    $120
-                  </h6>
+            {/* single arrival */}
+            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+              {" "}
+              <div className="">
+                <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
+                  <Image
+                    src={fadedJean}
+                    alt="cloth"
+                    width={150}
+                    height={120}
+                    className="object-cover rounded-[13.42px]"
+                  />
                 </div>
-              </CarouselItem>
-              {/* end of single arrival */}
-
-              {/* single arrival */}
-              <CarouselItem className="md:mr-6 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                {" "}
-                <div>
-                  <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
-                    <Image
-                      src={blackSl}
-                      alt="cloth"
-                      width={150}
-                      height={120}
-                      className="object-cover rounded-[13.42px]"
-                    />
+                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
+                  T-shirt with Tape Details
+                </h5>
+                <div className="flex gap-[11px] py-1 items-center">
+                  <div className="flex gap-[4.44px] items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Image
+                        key={i}
+                        src={rate}
+                        alt="star img"
+                        width={15.47}
+                        height={15.47}
+                        className="gap-[4.44px]"
+                      />
+                    ))}
                   </div>
-                  <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                    T-shirt with Tape Details
-                  </h5>
-                  <div className="flex gap-[11px] py-1 items-center">
-                    <div className="flex gap-[4.44px] items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Image
-                          key={i}
-                          src={rate}
-                          alt="star img"
-                          width={15.47}
-                          height={15.47}
-                          className="gap-[4.44px]"
-                        />
-                      ))}
-                    </div>
 
-                    <p className="text-[15px]">4.5/5</p>
-                  </div>
-                  <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                    $120
-                  </h6>
+                  <p className="text-[15px]">4.5/5</p>
                 </div>
-              </CarouselItem>
-              {/* end of single arrival */}
+                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
+                  $120
+                </h6>
+              </div>
+            </CarouselItem>
+            {/* end of single arrival */}
 
-              {/* single arrival */}
-              <CarouselItem className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 md:mr-6 lg:mr-8">
-                {" "}
-                <div>
-                  <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
-                    <Image
-                      src={gin}
-                      alt="cloth"
-                      width={150}
-                      height={120}
-                      className="object-cover rounded-[13.42px]"
-                    />
-                  </div>
-                  <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                    T-shirt with Tape Details
-                  </h5>
-                  <div className="flex gap-[11px] py-1 items-center">
-                    <div className="flex gap-[4.44px] items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Image
-                          key={i}
-                          src={rate}
-                          alt="star img"
-                          width={15.47}
-                          height={15.47}
-                          className="gap-[4.44px]"
-                        />
-                      ))}
-                    </div>
-
-                    <p className="text-[15px]">4.5/5</p>
-                  </div>
-                  <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                    $120
-                  </h6>
+            {/* single arrival */}
+            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+              {" "}
+              <div className="">
+                <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
+                  <Image
+                    src={Tshirt}
+                    alt="cloth"
+                    width={150}
+                    height={120}
+                    className="object-cover rounded-[13.42px]"
+                  />
                 </div>
-              </CarouselItem>
-              {/* end of single arrival */}
-
-              {/* single arrival */}
-              <CarouselItem className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 md:mr-6 lg:mr-8">
-                {" "}
-                <div>
-                  <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
-                    <Image
-                      src={gin}
-                      alt="cloth"
-                      width={150}
-                      height={120}
-                      className="object-cover rounded-[13.42px]"
-                    />
+                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
+                  T-shirt with Tape Details
+                </h5>
+                <div className="flex gap-[11px] py-1 items-center">
+                  <div className="flex gap-[4.44px] items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Image
+                        key={i}
+                        src={rate}
+                        alt="star img"
+                        width={15.47}
+                        height={15.47}
+                        className="gap-[4.44px]"
+                      />
+                    ))}
                   </div>
-                  <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                    T-shirt with Tape Details
-                  </h5>
-                  <div className="flex gap-[11px] py-1 items-center">
-                    <div className="flex gap-[4.44px] items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Image
-                          key={i}
-                          src={rate}
-                          alt="star img"
-                          width={15.47}
-                          height={15.47}
-                          className="gap-[4.44px]"
-                        />
-                      ))}
-                    </div>
 
-                    <p className="text-[15px]">4.5/5</p>
-                  </div>
-                  <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                    $120
-                  </h6>
+                  <p className="text-[15px]">4.5/5</p>
                 </div>
-              </CarouselItem>
-              {/* end of single arrival */}
-            </CarouselContent>
+                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
+                  $120
+                </h6>
+              </div>
+            </CarouselItem>
+            {/* end of single arrival */}
 
-            {/* <CarouselPrevious className="mb-5" /> */}
-            {/* <CarouselNext className="mb-5" /> */}
-          </Carousel>
-        </div>
+            {/* single arrival */}
+            <CarouselItem className="lg:basis-1/4  md:basis-1/3 basis-1/2">
+              {" "}
+              <div className="">
+                <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
+                  <Image
+                    src={blackSl}
+                    alt="cloth"
+                    width={150}
+                    height={120}
+                    className="object-cover rounded-[13.42px]"
+                  />
+                </div>
+                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
+                  T-shirt with Tape Details
+                </h5>
+                <div className="flex gap-[11px] py-1 items-center">
+                  <div className="flex gap-[4.44px] items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Image
+                        key={i}
+                        src={rate}
+                        alt="star img"
+                        width={15.47}
+                        height={15.47}
+                        className="gap-[4.44px]"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-[15px]">4.5/5</p>
+                </div>
+                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
+                  $120
+                </h6>
+              </div>
+            </CarouselItem>
+            {/* end of single arrival */}
+
+            {/* single arrival */}
+            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+              {" "}
+              <div className="">
+                <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
+                  <Image
+                    src={gin}
+                    alt="cloth"
+                    width={150}
+                    height={120}
+                    className="object-cover rounded-[13.42px]"
+                  />
+                </div>
+                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
+                  T-shirt with Tape Details
+                </h5>
+                <div className="flex gap-[11px] py-1 items-center">
+                  <div className="flex gap-[4.44px] items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Image
+                        key={i}
+                        src={rate}
+                        alt="star img"
+                        width={15.47}
+                        height={15.47}
+                        className="gap-[4.44px]"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-[15px]">4.5/5</p>
+                </div>
+                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
+                  $120
+                </h6>
+              </div>
+            </CarouselItem>
+            {/* end of single arrival */}
+
+            {/* single arrival */}
+            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+              {" "}
+              <div>
+                <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
+                  <Image
+                    src={gin}
+                    alt="cloth"
+                    width={150}
+                    height={120}
+                    className="object-cover rounded-[13.42px]"
+                  />
+                </div>
+                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
+                  T-shirt with Tape Details
+                </h5>
+                <div className="flex gap-[11px] py-1 items-center">
+                  <div className="flex gap-[4.44px] items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Image
+                        key={i}
+                        src={rate}
+                        alt="star img"
+                        width={15.47}
+                        height={15.47}
+                        className="gap-[4.44px]"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-[15px]">4.5/5</p>
+                </div>
+                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
+                  $120
+                </h6>
+              </div>
+            </CarouselItem>
+            {/* end of single arrival */}
+          </CarouselContent>
+        </Carousel>
 
         {/* button */}
         <div className="mt-6 py-2 w-full mx-auto grid place-items-center">

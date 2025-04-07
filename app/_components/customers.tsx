@@ -1,6 +1,3 @@
-// import React, { useCallback } from "react";
-// import left from "@/public/svg/left.svg";
-// import right from "@/public/svg/right.svg";
 import verified from "@/public/svg/verified.svg";
 import rate from "@/public/svg/rate.svg";
 import Image from "next/image";
@@ -60,15 +57,6 @@ const Customers = () => {
           <h1 className="font-bold text-[32px] text-[#000000] lg:text-[48px] lg:leading-[57.8px]">
             OUR HAPPY CUSTOMERS
           </h1>
-
-          <div className="flex items-center gap-1 justify-between mr-4 mb-4">
-            {/* <button>
-              <Image src={left} alt="left arrow" />
-            </button>
-            <button>
-              <Image src={right} alt="right arrow" />
-            </button> */}
-          </div>
         </div>
 
         <div className="flex justify-center">

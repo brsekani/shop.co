@@ -1,31 +1,28 @@
-import React from "react";
-import Image from "next/image";
-import gin from "@/public/images/gin.png";
-import Tshirt from "@/public/images/T-shirt.png";
-import blackRound from "@/public/images/blackRound.png";
-import fadedJean from "@/public/images/fadedJean.png";
-import blackSl from "@/public/images/blackSl.png";
-import rate from "@/public/svg/rate.svg";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Image from "next/image";
+import blackRound from "@/public/images/blackRound.png";
+import fadedJean from "@/public/images/fadedJean.png";
+import rate from "@/public/svg/rate.svg";
+import React from "react";
 
-const Selling = () => {
+const Options = () => {
   return (
-    <div className="pb-12 w-full">
-      <div>
-        <h1 className="font-bold leading-[38.4px] text-[32px] text-center mb-8 text-black h-[38px] md:mb-10 lg:mb-12 lg:text-[48px] lg:leading-[57.6px]">
-          TOP SELLING
+    <div>
+      {/* Might like */}
+      <div className="pt-12 pb-6">
+        <h1 className="text-[32px] mx-auto mb-8 w-[274px] lg:w-full text-[#000000] font-bold text-center leading-[36px]">
+          YOU MIGHT ALSO LIKE
         </h1>
 
-        {/* Arrivals */}
-        <Carousel className="ml-4 lg:mx-auto lg:max-w-[960px] xl:max-w-[1240px]">
-          <CarouselContent>
+        <Carousel>
+          <CarouselContent className="flex gap-x-6">
             {/* single arrival */}
-            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
-              <div>
+            <CarouselItem className="flex-shrink-0 basis-1/2 lg:basis-1/4">
+              <div className="">
                 <div className="bg-[#F0EEED] grid place-items-center h-[200px] lg:h-[220px] rounded-2xl">
                   <Image
                     src={blackRound}
@@ -67,9 +64,9 @@ const Selling = () => {
             {/* end of single arrival */}
 
             {/* single arrival */}
-            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+            <CarouselItem className="flex-shrink-0 basis-1/2 lg:basis-1/4">
               {" "}
-              <div>
+              <div className="">
                 <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
                   <Image
                     src={fadedJean}
@@ -106,12 +103,12 @@ const Selling = () => {
             {/* end of single arrival */}
 
             {/* single arrival */}
-            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+            <CarouselItem className="flex-shrink-0 basis-1/2 hidden lg:block lg:basis-1/4">
               {" "}
-              <div>
+              <div className="">
                 <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
                   <Image
-                    src={Tshirt}
+                    src={fadedJean}
                     alt="cloth"
                     width={150}
                     height={120}
@@ -145,90 +142,12 @@ const Selling = () => {
             {/* end of single arrival */}
 
             {/* single arrival */}
-            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+            <CarouselItem className="flex-shrink-0 basis-1/2 hidden lg:block lg:basis-1/4">
               {" "}
-              <div>
+              <div className="">
                 <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
                   <Image
-                    src={blackSl}
-                    alt="cloth"
-                    width={150}
-                    height={120}
-                    className="object-cover rounded-[13.42px]"
-                  />
-                </div>
-                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                  T-shirt with Tape Details
-                </h5>
-                <div className="flex gap-[11px] py-1 items-center">
-                  <div className="flex gap-[4.44px] items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Image
-                        key={i}
-                        src={rate}
-                        alt="star img"
-                        width={15.47}
-                        height={15.47}
-                        className="gap-[4.44px]"
-                      />
-                    ))}
-                  </div>
-
-                  <p className="text-[15px]">4.5/5</p>
-                </div>
-                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                  $120
-                </h6>
-              </div>
-            </CarouselItem>
-            {/* end of single arrival */}
-
-            {/* single arrival */}
-            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4 md:mr-6">
-              {" "}
-              <div>
-                <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
-                  <Image
-                    src={gin}
-                    alt="cloth"
-                    width={150}
-                    height={120}
-                    className="object-cover rounded-[13.42px]"
-                  />
-                </div>
-                <h5 className="text-[15px] h-[22px] pt-1 w-[180px] font-bold leading-[21.6px]">
-                  T-shirt with Tape Details
-                </h5>
-                <div className="flex gap-[11px] py-1 items-center">
-                  <div className="flex gap-[4.44px] items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Image
-                        key={i}
-                        src={rate}
-                        alt="star img"
-                        width={15.47}
-                        height={15.47}
-                        className="gap-[4.44px]"
-                      />
-                    ))}
-                  </div>
-
-                  <p className="text-[15px]">4.5/5</p>
-                </div>
-                <h6 className="text-black font-bold text-[20px] leading-[27px] w-[46px] h-[27px]">
-                  $120
-                </h6>
-              </div>
-            </CarouselItem>
-            {/* end of single arrival */}
-
-            {/* single arrival */}
-            <CarouselItem className="basis-1/2 md:basis-1/3 lg:basis-1/4 md:mr-6">
-              {" "}
-              <div>
-                <div className="bg-[#F0EEED] h-[200px] lg:h-[220px] grid place-items-center rounded-2xl">
-                  <Image
-                    src={gin}
+                    src={fadedJean}
                     alt="cloth"
                     width={150}
                     height={120}
@@ -261,20 +180,11 @@ const Selling = () => {
             </CarouselItem>
             {/* end of single arrival */}
           </CarouselContent>
-
-          {/* <CarouselPrevious className="mb-5" /> */}
-          {/* <CarouselNext className="mb-5" /> */}
         </Carousel>
-
-        {/* button */}
-        <div className="mt-6 py-2 w-full mx-auto grid place-items-center">
-          <button className="bg-transparent mx-4 w-[90%] sm:w-[218px] rounded-[62px] border-opacity-20 font-medium py-2 border text-[14px] border-black">
-            View All
-          </button>
-        </div>
       </div>
+      {/* end */}
     </div>
   );
 };
 
-export default Selling;
+export default Options;
