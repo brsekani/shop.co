@@ -5,6 +5,7 @@ import React from "react";
 import arrowRight from "@/public/svg/arrowRight.svg";
 import rate from "@/public/svg/rate.svg";
 import add from "@/public/svg/add.svg";
+import filterBtn from "@/public/svg/filterBtn.svg";
 import subtract from "@/public/svg/subtract.svg";
 import setting from "@/public/svg/setting.svg";
 import Size from "./components/size";
@@ -50,7 +51,7 @@ const Shop = () => {
               alt="arrow right sg"
               className="w-[10.08px] h-[5.69px] ml-[4.59px] mt-[12.03px] text-[#00000099]"
             />
-            <h5 className="text-[14px] leading-[18.9px] w-[65px] h-[10px] ml-[6px] font-normal text-[#00000099]">
+            <h5 className="text-[14px] leading-[18.9px] w-[65px] h-[10px] ml-[6px] font-normal text-[#000000]">
               T-shirts
             </h5>
           </div>
@@ -180,13 +181,18 @@ const Shop = () => {
 
               <div className="flex justify-between gap-x-2 lg:gap-[10px]">
                 <div className="grid place-items-center rounded-full py-[16px] px-[20px] lg:w-[48px] lg:h-[48px] w-[40px] h-[40px] bg-[#F0F0F0]">
-                  <Image src={setting} alt="setting" />
+                  <Image
+                    src={setting}
+                    alt="setting"
+                    className="w-[16.88px] h-[15.63px] lg:w-[20.25px] text-[#000000] lg:h-[18.75px]"
+                  />
                 </div>
-                <div className="hidden lg:block rounded-[62px] bg-[#F0F0F0] py-[16px] px-[20px]">
+                <div className="hidden lg:w-[120px] lg:flex items-center justify-between rounded-[62px] bg-[#F0F0F0] py-[16px] px-[20px]">
                   <h4 className="text-[16px] leading-[21.6px]">Latest</h4>
+                  <Image src={filterBtn} alt="" />
                 </div>
                 <div>
-                  <button className="h-[40px] text-[#FFFFFF] bg-[#000000] rounded-[62px] text-[12px] lg:text-[16px] font-medium leading-[16.2px] py-[12px] lg:h-[48px] px-[16px]">
+                  <button className="h-[40px] w-[113px] lg:w-[166px] text-[#FFFFFF] bg-[#000000] rounded-[62px] text-[12px] lg:text-[16px] font-medium leading-[16.2px] py-[12px] lg:h-[48px] px-[16px]">
                     Write a Review
                   </button>
                 </div>
