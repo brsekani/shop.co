@@ -1,25 +1,45 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import arrowRight from "@/public/svg/arrowRight.svg";
 import rate from "@/public/svg/rate.svg";
 import add from "@/public/svg/add.svg";
-import filterBtn from "@/public/svg/filterBtn.svg";
 import subtract from "@/public/svg/subtract.svg";
-import setting from "@/public/svg/setting.svg";
 import Size from "./components/size";
 import Colors from "./components/colors";
 import Tabs from "./components/tabs";
 import Outfits from "./components/outfits";
-import Reviews from "./components/reviews";
+// import Reviews from "./components/reviews";
 import Options from "./components/options";
-import shopT from "@/public/images/shopT_prev_ui.png";
+// import shopT from "@/public/images/shopT_prev_ui.png";
 import shopTF from "@/public/images/shopTF_prev_ui.png";
 import shopTB from "@/public/images/shopTB_prev_ui.png";
 import shopTFull from "@/public/images/shopTFull_prev_ui.png";
 
 const Shop = () => {
+  const [activeImage, setActiveImage] = useState(0);
+  const [number, setNumber] = useState(1);
+
+  const imgsData = [
+    {
+      src: shopTF,
+      alt: "front",
+      bg: "#F3F1EF",
+    },
+    {
+      src: shopTB,
+      alt: "back",
+      bg: "#F0EEED",
+    },
+    {
+      src: shopTFull,
+      alt: "full",
+      bg: "#F4F1F4",
+      className: "object-contain",
+    },
+  ];
+
   return (
     <>
       <div className="mt-[98px] lg:mt-[136px] pt-6 pb-10">
@@ -61,23 +81,32 @@ const Shop = () => {
             {/* outfits */}
             <div className="hidden mt-6 lg:flex lg:flex-row items-start lg:gap-2">
               <div className="lg:flex lg:flex-col items-center justify-between gap-2 mb-7">
-                <div className="bg-[#F3F1EF] border border-black rounded-[20px] grid place-items-center w-[152px] h-[168px]">
-                  <Image src={shopTF} alt="front" />
-                </div>
-                <div className="bg-[#F0EEED] rounded-[20px] grid place-items-center w-[152px] h-[168px]">
-                  <Image src={shopTB} alt="back" />
-                </div>
-                <div className="bg-[#F4F1F4] rounded-[20px] w-[152px] h-[168px]">
-                  <Image
-                    src={shopTFull}
-                    alt="full"
-                    className="object-contain"
-                  />
-                </div>
+                {imgsData.map((image, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setActiveImage(index)}
+                    className={`rounded-[20px] grid place-items-center w-[152px] h-[168px] ${
+                      activeImage === index
+                        ? "border border-black"
+                        : "border border-transparent"
+                    }`}
+                    style={{ backgroundColor: image.bg }}
+                  >
+                    {" "}
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      className={image.className || ""}
+                    />
+                  </div>
+                ))}
               </div>
 
               <div className="bg-[#F0EEED] grid place-items-center w-[444px] h-[520px] mb-3 rounded-[20px]">
-                <Image src={shopT} alt="shop T" />
+                <Image
+                  src={imgsData[activeImage].src}
+                  alt={imgsData[activeImage].alt}
+                />
               </div>
             </div>
 
@@ -144,11 +173,18 @@ const Shop = () => {
               {/* Product cart */}
               <div className="pt-5 pb-8 grid grid-cols-[auto,1fr] gap-x-1">
                 <div className="bg-[#F0F0F0] w-[110px] lg:w-[170px] h-[44px] py-[12px] px-[16px] rounded-[62px] lg:py-[16px] lg:px-[20px] flex items-center justify-between lg:h-[52px]">
-                  <button className="h-[1.88px] w-[15.63px] lg:w-[18.75px] lg:h-[2.25px]">
+                  <button
+                    className="h-[1.88px] w-[15.63px] lg:w-[18.75px] lg:h-[2.25px]"
+                    disabled={number <= 1}
+                    onClick={() => setNumber(number - 1)}
+                  >
                     <Image src={subtract} alt="add" />
                   </button>
-                  <h5>1</h5>
-                  <button className="w-[15.63px] h-[15.63px] lg:w-[18.75] lg:h-[18.75px]">
+                  <h5>{number}</h5>
+                  <button
+                    className="w-[15.63px] h-[15.63px] lg:w-[18.75] lg:h-[18.75px]"
+                    onClick={() => setNumber(number + 1)}
+                  >
                     <Image src={add} alt="add" />
                   </button>
                 </div>
@@ -165,44 +201,8 @@ const Shop = () => {
           <div className="w-full mt-10">
             <Tabs />
 
-            {/* border */}
-            <div className="border border-[#0000001A]"></div>
-
-            {/* reviews */}
-            <div className="flex justify-between my-3 mb-6">
-              <div className="flex items-center">
-                <h2 className="font-bold leading-[27px] text-[20px] h-[27px] text-[#000000]">
-                  All Reviews
-                </h2>
-                <span className="text-[#00000099] font-normal text-[14px]">
-                  (451)
-                </span>
-              </div>
-
-              <div className="flex justify-between gap-x-2 lg:gap-[10px]">
-                <div className="grid place-items-center rounded-full py-[16px] px-[20px] lg:w-[48px] lg:h-[48px] w-[40px] h-[40px] bg-[#F0F0F0]">
-                  <Image
-                    src={setting}
-                    alt="setting"
-                    className="w-[16.88px] h-[15.63px] lg:w-[20.25px] text-[#000000] lg:h-[18.75px]"
-                  />
-                </div>
-                <div className="hidden lg:w-[120px] lg:flex items-center justify-between rounded-[62px] bg-[#F0F0F0] py-[16px] px-[20px]">
-                  <h4 className="text-[16px] leading-[21.6px]">Latest</h4>
-                  <Image src={filterBtn} alt="" />
-                </div>
-                <div>
-                  <button className="h-[40px] w-[113px] lg:w-[166px] text-[#FFFFFF] bg-[#000000] rounded-[62px] text-[12px] lg:text-[16px] font-medium leading-[16.2px] py-[12px] lg:h-[48px] px-[16px]">
-                    Write a Review
-                  </button>
-                </div>
-              </div>
-            </div>
+            <Options />
           </div>
-
-          <Reviews />
-
-          <Options />
         </div>
       </div>
     </>
