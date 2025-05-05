@@ -6,16 +6,16 @@ import arrowRight from "@/public/svg/arrowRight.svg";
 import rate from "@/public/svg/rate.svg";
 import add from "@/public/svg/add.svg";
 import subtract from "@/public/svg/subtract.svg";
-import Size from "./components/size";
-import Colors from "./components/colors";
-import Tabs from "./components/tabs";
-import Outfits from "./components/outfits";
+import Size from "../../_components/size";
+import Tabs from "../../_components/tabs";
+import Outfits from "../../_components/outfits";
 // import Reviews from "./components/reviews";
-import Options from "./components/options";
+import Options from "../../_components/options";
 // import shopT from "@/public/images/shopT_prev_ui.png";
 import shopTF from "@/public/images/shopTF_prev_ui.png";
 import shopTB from "@/public/images/shopTB_prev_ui.png";
 import shopTFull from "@/public/images/shopTFull_prev_ui.png";
+import Colors from "@/app/_components/colors";
 
 const Shop = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -77,32 +77,34 @@ const Shop = () => {
           </div>
           {/* end  */}
 
-          <div className="lg:grid lg:grid-cols-2 place-items-center lg:gap-4">
+          <div className="lg:grid lg:grid-cols-2 place-items-center lg:gap-4 h-full">
             {/* outfits */}
-            <div className="hidden mt-6 lg:flex lg:flex-row items-start lg:gap-2">
-              <div className="lg:flex lg:flex-col items-center justify-between gap-2 mb-7">
+            <div className="hidden mt-6 lg:flex items-stretch gap-2 h-[500px]">
+              {" "}
+              {/* Set fixed or min height */}
+              {/* Thumbnail Column */}
+              <div className="flex flex-col justify-between gap-[14px] h-full">
                 {imgsData.map((image, index) => (
                   <div
                     key={index}
                     onClick={() => setActiveImage(index)}
-                    className={`rounded-[20px] grid place-items-center w-[152px] h-[168px] ${
+                    className={`rounded-[20px] grid place-items-center w-[152px] h-[167px] ${
                       activeImage === index
                         ? "border border-black"
                         : "border border-transparent"
                     }`}
                     style={{ backgroundColor: image.bg }}
                   >
-                    {" "}
                     <Image
                       src={image.src}
                       alt={image.alt}
-                      className={image.className || ""}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 ))}
               </div>
-
-              <div className="bg-[#F0EEED] grid place-items-center w-[444px] h-[520px] mb-3 rounded-[20px]">
+              {/* Main Image */}
+              <div className="flex-1 bg-[#F0EEED] grid place-items-center rounded-[20px] h-full">
                 <Image
                   src={imgsData[activeImage].src}
                   alt={imgsData[activeImage].alt}
@@ -180,7 +182,7 @@ const Shop = () => {
                   >
                     <Image src={subtract} alt="add" />
                   </button>
-                  <h5>{number}</h5>
+                  <h5 className="cursor-default">{number}</h5>
                   <button
                     className="w-[15.63px] h-[15.63px] lg:w-[18.75] lg:h-[18.75px]"
                     onClick={() => setNumber(number + 1)}

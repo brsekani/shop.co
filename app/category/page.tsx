@@ -5,15 +5,15 @@ import React, { useState } from "react";
 import arrowRight from "@/public/svg/arrowRight.svg";
 import arrowUp from "@/public/svg/arrowUp.svg";
 import setting from "@/public/svg/setting.svg";
-import Filters from "./components/Filters";
-import Products from "./components/products";
-import Border from "../_components/Border";
 import next from "@/public/svg/next.svg";
 import previous from "@/public/svg/previous.svg";
 import rate from "@/public/svg/rate.svg";
 import cartImgOne from "@/public/images/cartImg1.png";
 import cartImgTwo from "@/public/images/cartImg2.png";
 import cartImgThree from "@/public/images/cartImg3.png";
+import Filters from "../_components/Filters";
+import Products from "../_components/products";
+import Border from "../_components/Border";
 
 const Category = () => {
   const [isOpen, setIsOpen] = useState(false);

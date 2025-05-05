@@ -1,6 +1,6 @@
 import React from "react";
-import casual from "@/public/images/casual.jpg";
-import formal from "@/public/images/formal.png";
+import casual from "@/public/images/casual.png";
+import formal from "@/public/images/formal.jpg";
 import party from "@/public/images/party.png";
 import gym from "@/public/images/gym.png";
 import Image from "next/image";
@@ -13,57 +13,65 @@ const Browse = () => {
           BROWSE BY DRESS STYLE
         </h1>
 
-        <div className="w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-            {/* first */}
-            <div className="w-full relative h-[190px] rounded-[20px] bg-[#FFFFFF]">
-             <h3 className="absolute top-[3%] left-[5%] leading-[32.4px] text-[24px] lg:text-[36px] font-bold text-black">Casual</h3>
+        <div className="w-full flex flex-col gap-3">
+          <div className="grid md:grid-cols-[35%_65%] grid-cols-1 gap-3 flex-wrap">
+            {/* Row 1 */}
+            {/* Short */}
+            <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+                Casual
+              </h3>
               <Image
                 src={casual}
                 alt="casual photo"
-                width={200}
-                height={190}
-                className="absolute top-0 right-0 h-full object-cover"
-                />               
+                // width={200}
+                // height={190}
+                className="absolute top-0 right-0 h-full object-cover rounded-[20px]"
+              />
             </div>
 
-            {/* second */}
-            <div className="w-full relative h-[190px] rounded-[20px] bg-[#FFFFFF]">
-             <h3 className="absolute top-[3%] left-[5%] leading-[32.4px] text-[24px] lg:text-[36px] font-bold text-black">Formal</h3>
+            {/* Long */}
+            <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+                Formal
+              </h3>
               <Image
-                src={casual}
-                alt="casual photo"
-                width={200}
-                height={190}
-                className="absolute top-0 right-0 h-full object-cover"
-                />               
+                src={formal}
+                alt="formal photo"
+                // width={200}
+                // height={190}
+                className="absolute top-0 right-0 h-full object-cover rounded-[20px]"
+              />
             </div>
+          </div>
 
-            {/* Third */}
-            <div className="w-full lg:mr-6 relative h-[190px] rounded-[20px] bg-[#FFFFFF]">
-             <h3 className="absolute top-[3%] left-[5%] leading-[32.4px] text-[24px] lg:text-[36px] font-bold text-black">Party</h3>
+          <div className="grid md:grid-cols-[65%_35%] grid-cols-1 gap-3 flex-wrap">
+            {/* Row 1 */}
+            {/* Short */}
+            <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+                Party
+              </h3>
               <Image
-                src={casual}
-                alt="casual photo"
-                width={200}
-                height={190}
-                className="absolute top-0 right-0 h-full object-cover"
-                />               
+                src={party}
+                alt="party photo"
+                // width={200}
+                // height={190}
+                className="absolute top-0 right-0 h-full object-cover rounded-[20px]"
+              />
             </div>
 
-            {/* Last */}
-            <div className="w-full relative h-[190px] rounded-[20px] bg-[#FFFFFF]">
-             <h3 className="absolute top-[3%] left-[5%] leading-[32.4px] text-[24px] lg:text-[36px] font-bold text-black">Gym</h3>
+            {/* Long */}
+            <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+                Gym
+              </h3>
               <Image
-                src={casual}
-                alt="casual photo"
-                width={200}
-                height={190}
-                className="absolute top-0 right-0 h-full object-cover"
-                />               
+                src={gym}
+                alt="gym photo"
+                className="absolute top-0 right-0 h-full object-cover rounded-[20px]"
+              />
             </div>
-
-
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import calvinKlein from "@/public/svg/calvinKlein.svg";
 import zira from "@/public/svg/zira.svg";
 import prada from "@/public/svg/prada.svg";
 import versace from "@/public/svg/versace.svg";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -27,9 +28,11 @@ export default function Hero() {
                 your sense of style.
               </p>
 
-              <button className="w-[160px] lg:w-[210px] h-[46px] lg:h-[52px] rounded-[62px] bg-[#000000] text-[#FFFFFF] leading-[21.6px] text-[14px] lg:text-[16px] font-medium mt-1 md:mt-0">
-                Shop now
-              </button>
+              <Link href={"/category"}>
+                <button className="w-[160px] lg:w-[210px] h-[46px] lg:h-[52px] rounded-[62px] bg-[#000000] text-[#FFFFFF] leading-[21.6px] text-[14px] lg:text-[16px] font-medium mt-1 md:mt-0">
+                  Shop now
+                </button>
+              </Link>
             </div>
 
             <div className="flex flex-row md:gap-8 gap-[27px] h-[74px] items-center justify-center flex-wrap">
