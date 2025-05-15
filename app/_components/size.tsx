@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Size = () => {
-  const [activeSize, setActiveSize] = useState(2);
+  const [activeSize, setActiveSize] = useState(0);
   const sizes = ["Small", "Medium", "Large", "X-large"];
 
   return (
@@ -18,7 +18,7 @@ const Size = () => {
               key={index}
               className={`${
                 activeSize === index ? "bg-[#000000] " : "bg-[#F0F0F0]"
-              } py-[10px] px-[20px] rounded-[62px] lg:py-[12px] lg:px-[24px] grid place-items-center`}
+              } py-[10px] px-[20px] rounded-[62px] lg:py-[12px] lg:px-[24px] grid place-items-center cursor-pointer`}
               onClick={() => setActiveSize(index)}
             >
               <span

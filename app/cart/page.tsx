@@ -7,9 +7,9 @@ import cartImgTwo from "@/public/images/cartImg2.png";
 import cartImgThree from "@/public/images/cartImg3.png";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
-import Order from "./component/order";
+import Order from "../_components/Order";
 
-const Cart = () => {
+export default function Page() {
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -83,68 +83,70 @@ const Cart = () => {
 
           <div className="lg:mb-10 md:flex items-start gap-x-6">
             {/* cart products */}
-            <div className="border p-4 md:w-full lg:w-[715px] border-[#0000001A] w-[358px] h-auto rounded-[20px]">
+            <div className="border p-4 md:w-full lg:w-[715px] border-[#0000001A] w-[358px] h-auto rounded-[20px] space-y-6">
               {products.length === 0 ? (
                 <h1 className="text-center py-10 font-medium text-black text-[16px] lg:text-[24px]">
                   No products found
                 </h1>
               ) : (
                 products.map((product, index) => (
-                  <div key={index} className="border-b mb-5 pb-3 flex gap-2">
-                    <div className="bg-[#F0EEED] grid place-items-center border-b lg:w-[124px] lg:h-[124px] w-[99px] h-[99px] rounded-[8.66px]">
-                      <Image src={product.src} alt="cart Image One" />
+                  <div
+                    key={index}
+                    className={`flex gap-3 ${
+                      index + 1 === products.length ? "" : "border-b pb-6"
+                    }`}
+                  >
+                    {/* Image Section */}
+                    <div className="bg-[#F0EEED] grid place-items-center w-[99px] h-[99px] lg:w-[124px] lg:h-[124px] rounded-[8.66px]">
+                      <Image src={product.src} alt="cart Image" />
                     </div>
 
-                    {/* cart info */}
-                    <div className="w-[217px] lg:w-[527px]">
-                      <div className="flex justify-between items-center">
-                        <h4 className="leading-[21.6px] text-[16px] font-bold lg:text-[20px] lg:leading-[27px] text-[#000000]">
+                    {/* Cart Info */}
+                    <div className="flex flex-col justify-between w-full">
+                      <div className="flex justify-between items-start">
+                        <h4 className="text-[16px] lg:text-[20px] font-bold leading-[21.6px] lg:leading-[27px] text-black">
                           {product.name}
                         </h4>
-                        <div>
-                          <Trash2
-                            onClick={() => handleDelete(product.id)}
-                            className="text-[#FF3333] lg:w-[18px] lg:h-[19.5px] w-[15px] h-[16.25px]"
-                          />
-                        </div>
+                        <Trash2
+                          onClick={() => handleDelete(product.id)}
+                          className="text-[#FF3333] w-[15px] h-[16px] lg:w-[18px] lg:h-[19px] cursor-pointer"
+                        />
                       </div>
 
-                      <div className="">
-                        <h5 className="leading-[16.2px] lg:text-[14px] font-normal text-[12px] lg:leading-[18.9px] text-[#000000]">
+                      <div className="mt-1">
+                        <p className="text-[12px] lg:text-[14px] text-black">
                           Size:{" "}
-                          <span className="text-[12px] lg:leading-[18.9px] lg:text-[14px] leading-[16.2px] text-[#00000099]">
+                          <span className="text-[#00000099]">
                             {product.size}
                           </span>
-                        </h5>
-                      </div>
-
-                      <div className="">
-                        <h5 className="leading-[16.2px] lg:leading-[18.9px] lg:text-[14px] font-normal text-[12px] text-[#000000]">
+                        </p>
+                        <p className="text-[12px] lg:text-[14px] text-black">
                           Color:{" "}
-                          <span className="text-[12px] lg:leading-[18.9px] lg:text-[14px] leading-[16.2px] text-[#00000099]">
+                          <span className="text-[#00000099]">
                             {product.color}
                           </span>
-                        </h5>
+                        </p>
                       </div>
 
-                      <div className="flex items-center justify-between h-[31px] gap-[20px] mt-4">
-                        <p className="text-[20px] lg:text-[24px] lg:leading-[32.4px] text-[#000000] leading-[27px] font-bold">
+                      <div className="flex items-center justify-between mt-4">
+                        <p className="text-[20px] lg:text-[24px] font-bold text-black">
                           {product.price}
                         </p>
-                        <div className="flex items-center lg:py-[12px] lg:px-[24px] gap-6 py-[14px] h-[31px] px-[20px] bg-[#F0F0F0] rounded-[62px]">
+
+                        <div className="flex items-center gap-6 px-5 py-3 lg:px-6 lg:py-3 bg-[#F0F0F0] rounded-full h-[31px]">
                           <button
-                            className="w-[12.5px] lg:w-[15.63px]"
                             onClick={() => subtractNumber(index)}
                             disabled={quantities[index] <= 1}
+                            className="text-xl font-bold"
                           >
                             -
                           </button>
-                          <h3 className="text-[14px] font-medium leading-[18.9px] h-[19px] w-[6px]">
+                          <span className="text-[14px] font-medium">
                             {quantities[index]}
-                          </h3>
+                          </span>
                           <button
-                            className="w-[12.5px] lg:w-[15.63px]"
                             onClick={() => addNumber(index)}
+                            className="text-xl font-bold"
                           >
                             +
                           </button>
@@ -164,6 +166,4 @@ const Cart = () => {
       </div>
     </>
   );
-};
-
-export default Cart;
+}
