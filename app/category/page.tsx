@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import arrowRight from "@/public/svg/arrowRight.svg";
 import arrowUp from "@/public/svg/arrowUp.svg";
+import arrowDown from "@/public/svg/arrowDown.svg";
 import setting from "@/public/svg/setting.svg";
 import next from "@/public/svg/next.svg";
 import previous from "@/public/svg/previous.svg";
@@ -18,6 +19,26 @@ import Border from "../_components/Border";
 const Category = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSize, setActiveSize] = useState(4);
+  const [price, setPrice] = useState(false);
+  const [color, setColor] = useState(false);
+  const [size, setSize] = useState(false);
+  const [dressStyle, setDressStyle] = useState(false);
+
+  const togglePrice = () => {
+    setPrice(prev => !prev)
+  }
+
+  const toggleColor = () => {
+    setColor(prev => !prev)
+  }
+
+  const toggleSize = () => {
+    setSize(prev => !prev)
+  }
+
+  const toggleDressStyle = () => {
+    setDressStyle(prev => !prev)
+  }
 
   const products = [
     {
@@ -84,6 +105,8 @@ const Category = () => {
       rating: 4.8,
     },
   ];
+
+  const colors = ['#00C12B', '#F50606', '#F5DD06', '#F57906', '#06CAF5', '#7D06F5', '#FFFFFF', '#F506A4', '#000000']
 
   const sizes = [
     "XX-Small",
@@ -194,83 +217,123 @@ const Category = () => {
                   <h2 className="font-bold text-black text-[20px] leading-[100%]">
                     Price
                   </h2>
-                  <Image src={arrowUp} alt="arrow svg" />
+                  <button onClick={togglePrice}>
+                    {price ?
+                    (
+                      <Image src={arrowDown} alt="arrow svg"/>  
+                    ) : (
+                      <Image src={arrowUp} alt="arrow svg"/> 
+                    )
+                     }
+                  </button>
                 </div>
+                {!price && (
                 <input
                   type="range"
                   name="range"
                   id="range"
                   className="w-[247px]"
                 />
+                )}
               </div>
               {/* end of price section */}
+
               {/* Colors */}
               <div className="pt-5 pb-4 border-b">
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="font-bold text-black text-[20px] leading-[100%]">
                     Colors
                   </h2>
-                  <Image src={arrowUp} alt="arrow svg" />
+                                    <button onClick={toggleColor}>
+                    {color ?
+                    (
+                      <Image src={arrowDown} alt="arrow svg"/>  
+                    ) : (
+                      <Image src={arrowUp} alt="arrow svg"/> 
+                    )
+                     }
+                  </button>
                 </div>
 
+                     {!color && (
                 <div className="flex items-center gap-2 flex-wrap">
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#00C12B]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F50606]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F5DD06]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F57906]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#06CAF5]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#7D06F5]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F506A4]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#FFFFFF]"></div>
-                  <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#000000]"></div>
+                  {colors.map((color) => (
+                  <div key={color} className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full" style={{backgroundColor: color}}>            
+                  </div>
+                  ))}
                 </div>
+                     )}
               </div>
               {/* end of color section */}
+
               {/* Size */}
               <div className="pt-5 pb-4 border-b">
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="font-bold text-black text-[20px] leading-[100%]">
                     Size
                   </h2>
-                  <Image src={arrowUp} alt="arrow svg" />
+                                                      <button onClick={toggleSize}>
+                    {size ?
+                    (
+                      <Image src={arrowDown} alt="arrow svg"/>  
+                    ) : (
+                      <Image src={arrowUp} alt="arrow svg"/> 
+                    )
+                     }
+                  </button>
+
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
+ 
+                {!size && (
+                  <div className="flex flex-wrap items-center gap-2">
                   {sizes.map((size, index) => (
-                    <div
-                      key={index}
-                      className={`${
-                        activeSize === index ? "bg-[#000000] " : "bg-[#F0F0F0]"
+                    <button
+                    key={index}
+                    className={`${
+                      activeSize === index ? "bg-[#000000] " : "bg-[#F0F0F0]"
                       } py-[10px] w-[110px] px-[20px] rounded-[62px] lg:py-[12px] lg:px-[24px] grid place-items-center`}
                       onClick={() => setActiveSize(index)}
-                    >
+                      >
                       <span
                         className={`text-[14px] font-normal leading-[18.9px] ${
                           activeSize === index
-                            ? "text-[#FFFFFF]"
-                            : "text-[#00000099]"
-                        }`}
-                      >
+                          ? "text-[#FFFFFF]"
+                          : "text-[#00000099]"
+                          }`}
+                          >
                         {size}
                       </span>
-                    </div>
+                    </button>
                   ))}
                 </div>
+                )}
               </div>
               {/* End of size */}
+
               {/* Dress style */}
-              <div className="pt-5 pb-4 border-b">
+              <div className="pt-5 pb-4">
                 <div className="flex items-center justify-between">
                   <h2 className="font-bold text-black text-[20px] leading-[100%]">
                     Dress Style
                   </h2>
-                  <Image src={arrowUp} alt="arrow svg" />
+                                                           <button onClick={toggleDressStyle}>
+                    {dressStyle ?
+                    (
+                      <Image src={arrowDown} alt="arrow svg"/>  
+                    ) : (
+                      <Image src={arrowUp} alt="arrow svg"/> 
+                    )
+                     }
+                  </button>
                 </div>
 
-                <div className="flex flex-col py-6 grid-cols-1 gap-[20px]">
+                {!dressStyle && (
+
+                  <div className="flex flex-col py-6 grid-cols-1 gap-[20px]">
                   {styles.map((style) => (
                     <div
-                      key={style}
-                      className="flex items-center justify-between h-[11px]"
+                    key={style}
+                    className="flex items-center justify-between h-[11px]"
                     >
                       <h5 className="text-[#00000099] text-[16px] leading-[100%] font-normal">
                         {style}
@@ -279,9 +342,11 @@ const Category = () => {
                     </div>
                   ))}
                 </div>
+                )}
               </div>
               {/* End of dress style */}
-              <button className="w-[247px] -mt-8 bg-[#000000] font-medium text-[#FFFFFF] text-[14px] leading-[100%] py-[16px] px-[54px] rounded-[62px] mb-6">
+
+              <button className="w-[247px] mt-8 bg-[#000000] font-medium text-[#FFFFFF] text-[14px] leading-[100%] py-[16px] px-[54px] rounded-[62px] mb-6">
                 Apply Filter
               </button>
             </div>
