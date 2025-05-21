@@ -18,7 +18,7 @@ const Browse = () => {
             {/* Row 1 */}
             {/* Short */}
             <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
-              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-5">
                 Casual
               </h3>
               <Image
@@ -32,7 +32,7 @@ const Browse = () => {
 
             {/* Long */}
             <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
-              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-5">
                 Formal
               </h3>
               <Image
@@ -49,7 +49,7 @@ const Browse = () => {
             {/* Row 1 */}
             {/* Short */}
             <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
-              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-5">
                 Party
               </h3>
               <Image
@@ -63,7 +63,7 @@ const Browse = () => {
 
             {/* Long */}
             <div className="md:h-[289px] h-[190px] rounded-[20px] bg-white relative">
-              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-10">
+              <h3 className="absolute top-[3%] left-[5%] text-[24px] lg:text-[36px] font-bold text-black z-5">
                 Gym
               </h3>
               <Image

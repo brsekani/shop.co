@@ -9,10 +9,16 @@ import search1 from "@/public/svg/search1.svg";
 import hambugger from "@/public/svg/hambugger.svg";
 import Link from "next/link";
 import { useSearchStore } from "../store/searchStore";
+import Login from "./Login";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { searchOpen, setSearchOpen } = useSearchStore();
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleLogin = () => {
+    setShowLogin(prev => !prev)
+  }
 
   const handleOpenSearch = () => {
     if (menuOpen) setMenuOpen(false); // Close menu if it's open
@@ -25,6 +31,7 @@ export default function Header() {
   };
 
   return (
+    <>
     <div className="fixed top-0 left-0 z-10 h-fit w-full flex items-center justify-between flex-col">
       <div className="w-full mx-auto max-w-full">
         {/* Dark header */}
@@ -87,14 +94,16 @@ export default function Header() {
             <div className="flex items-center flex-row gap-4">
               <Image
                 src={search1}
-                alt="search"
+                 alt="search"
                 className="cursor-pointer block lg:hidden"
                 onClick={handleOpenSearch}
-              />
+                />
               <Link href={"/cart"}>
                 <Image src={cart} alt="cart" className="cursor-pointer" />
               </Link>
+              <button onClick={handleLogin}>
               <Image src={profile} alt="profile" className="cursor-pointer" />
+              </button>
             </div>
           </div>
         </div>
@@ -102,7 +111,7 @@ export default function Header() {
         {/* Mobile Search Dropdown */}
         <div
           className={`w-full h-24 pb-2 bg-white px-4 relative z-10 lg:hidden overflow-hidden  
-        ${searchOpen ? "max-h-14 animate-dropdown" : "max-h-0"}`}
+            ${searchOpen ? "max-h-14 animate-dropdown" : "max-h-0"}`}
         >
           <input
             className="w-full h-full border border-opacity-30 border-black rounded-[62px] mb-4 pl-12 pr-2"
@@ -136,5 +145,8 @@ export default function Header() {
         </ul>
       </div>
     </div>
+
+    <Login showLogin={showLogin} handleLogin={handleLogin}/>
+        </>
   );
 }
