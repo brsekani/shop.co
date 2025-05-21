@@ -40,8 +40,8 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
                </div>
 
                <div>
-                <h3 className="font-normal text-[#000000] py-5 w-[342px] h-[10px] text-[14px] leading-[100%]">WELCOME BACK</h3>
-                <p className="text-[#00000099] text-[12px] lg:py-1 leading-[100%] W-[269px] h-[16px]">Sign in to access your account and track your style</p>
+                <h3 className="font-bold text-[#000000] py-5 w-[342px] h-[10px] text-[14px] leading-[100%]">WELCOME BACK</h3>
+                <p className="text-[#00000099] text-[12px] lg:py-1 leading-[100%] W-[269px] h-[16px] font-normal">Sign in to access your account and track your style</p>
                 <div className="flex flex-col py-3 lg:py-6 gap-y-3 lg:flex-row lg:gap-x-5">
                     <button className="bg-[#0000000F] rounded-[30px] px-[28px] py-[20px] text-[12px] font-normal leading-[100%] tracking-wider">Continue with Google</button>
                     <button className="bg-[#0000000F] rounded-[30px] px-[28px] py-[20px] text-[12px] font-normal leading-[100%] tracking-wider">Continue with Facebook</button>
