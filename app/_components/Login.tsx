@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import left from "@/public/svg/left.svg";
 import heroImage from "@/public/images/shopHero.jpeg";
 import star from "@/public/svg/star.svg";
 import eye from "@/public/svg/eye.svg";
+import SignUp from "./SignUp";
 
 interface LoginProps {
     showLogin : boolean;
@@ -12,6 +13,12 @@ interface LoginProps {
 }
 
 const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
+    const [showSignup, setShowSignup] = useState(false);
+
+    const handleSignUpModal = () => {
+            setShowSignup(prev => !prev)
+    }
+
        useEffect(() => {
         if(showLogin) {
             document.body.classList.add('overflow-hidden')
@@ -26,7 +33,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
     return (
         <>
         {showLogin && (
-            <div className="bg-white h-auto fixed z-20 top-0 left-0 w-full">
+            <div className="bg-white h-full fixed z-20 top-0 left-0 w-full">
                 {/* Desktop view */}
                 <div className="grid md:grid-cols-[1fr,1fr]">
                 {/* mobile */}
@@ -81,7 +88,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
 
                     {/* others */}
                     <div className="w-full mx-auto">
-                    <p className="text-center font-normal lg:text-14px text-[#000000]">Don&apos; have an account? <Link href="" className="underline font-bold text-[#000000]">Create Account</Link></p>
+                    <p className="text-center font-normal lg:text-14px text-[#000000]">Don&apos; have an account? <Link href="" className="underline font-bold text-[#000000]" onClick={handleSignUpModal}>Create Account</Link></p>
                     </div>
                 </form>
                </div>
@@ -103,6 +110,8 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
             </div>
                 </div>
             )}
+
+            <SignUp showSignup={showSignup} handleSignUpModal={handleSignUpModal}/>
         </>
     )
 }
