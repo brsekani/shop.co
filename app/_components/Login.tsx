@@ -6,6 +6,7 @@ import heroImage from "@/public/images/shopHero.jpeg";
 import star from "@/public/svg/star.svg";
 import eye from "@/public/svg/eye.svg";
 import SignUp from "./SignUp";
+import ForgotPassword from "./forgot-password";
 
 interface LoginProps {
     showLogin : boolean;
@@ -14,6 +15,11 @@ interface LoginProps {
 
 const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
     const [showSignup, setShowSignup] = useState(false);
+    const [forgotPassword, setForgotPassword] = useState(false)
+
+    const handleForgotPassword = () => {
+        setForgotPassword(prev => !prev);
+    }
 
     const handleSignUpModal = () => {
             setShowSignup(prev => !prev)
@@ -69,7 +75,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
                     <div className="flex flex-col">
                         <div className="flex items-center justify-between">
                         <label htmlFor="password" className="pb-2 text-[14px] font-normal leading-[100%]">Password</label>
-                        <Link href="" className="underline text-[#000000] font-bold text-[12px] pb-1 leading-[100%]">Forgot Password</Link>
+                        <Link href="" className="underline text-[#000000] font-bold text-[12px] pb-1 leading-[100%]" onClick={handleForgotPassword}>Forgot Password</Link>
                         </div>
                         <div className="relative">
                     <input type="password" name="" placeholder="Enter your password" id="password" className="placeholder:text-[#00000099] placeholder:text-sm w-full relative rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px]"/>
@@ -112,6 +118,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
             )}
 
             <SignUp showSignup={showSignup} handleSignUpModal={handleSignUpModal}/>
+            <ForgotPassword forgotPassword={forgotPassword} handleForgotPassword={handleForgotPassword}/>
         </>
     )
 }
