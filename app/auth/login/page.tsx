@@ -1,44 +1,17 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react"
+import React from "react"
 import left from "@/public/svg/left.svg";
 import heroImage from "@/public/images/shopHero.jpeg";
 import star from "@/public/svg/star.svg";
 import eye from "@/public/svg/eye.svg";
-import SignUp from "./SignUp";
-import ForgotPassword from "./forgot-password";
 
-interface LoginProps {
-    showLogin : boolean;
-    handleLogin : () => void;
-}
-
-const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
-    const [showSignup, setShowSignup] = useState(false);
-    const [forgotPassword, setForgotPassword] = useState(false)
-
-    const handleForgotPassword = () => {
-        setForgotPassword(prev => !prev);
-    }
-
-    const handleSignUpModal = () => {
-            setShowSignup(prev => !prev)
-    }
-
-       useEffect(() => {
-        if(showLogin) {
-            document.body.classList.add('overflow-hidden')
-        } else {
-            document.body.classList.remove('overflow-hidden')
-        }
-
-        // cleanup on unmount
-        return () => document.body.classList.remove('overflow-hidden');
-    }, [showLogin])
+const Login : React.FC = () => {
 
     return (
         <>
-        {showLogin && (
             <div className="bg-white h-full fixed z-20 top-0 left-0 w-full">
                 {/* Desktop view */}
                 <div className="grid md:grid-cols-[1fr,1fr]">
@@ -46,9 +19,11 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
                 <div className="p-6 lg:px-16">
                     {/* go back */}
                <div className="flex items-center gap-x-[8px]">
-                <button  onClick={handleLogin} className="text-[12px] font-normal flex items-center gap-x-2 text-[#000000]">
+                <button className="text-[12px] font-normal text-[#000000]">
+                    <Link href="/"  className=" flex items-center gap-x-2">
                 <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span> Go back
                     </span> 
+                    </Link>
                 </button>
                </div>
 
@@ -75,7 +50,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
                     <div className="flex flex-col">
                         <div className="flex items-center justify-between">
                         <label htmlFor="password" className="pb-2 text-[14px] font-normal leading-[100%]">Password</label>
-                        <Link href="" className="underline text-[#000000] font-bold text-[12px] pb-1 leading-[100%]" onClick={handleForgotPassword}>Forgot Password</Link>
+                        <Link href="/auth/forgot-password" className="underline text-[#000000] font-bold text-[12px] pb-1 leading-[100%]">Forgot Password</Link>
                         </div>
                         <div className="relative">
                     <input type="password" name="" placeholder="Enter your password" id="password" className="placeholder:text-[#00000099] placeholder:text-sm w-full relative rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px]"/>
@@ -94,7 +69,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
 
                     {/* others */}
                     <div className="w-full mx-auto">
-                    <p className="text-center font-normal lg:text-14px text-[#000000]">Don&apos; have an account? <Link href="" className="underline font-bold text-[#000000]" onClick={handleSignUpModal}>Create Account</Link></p>
+                    <p className="text-center font-normal lg:text-14px text-[#000000]">Don&apos; have an account? <Link href="/auth/signup" className="underline font-bold text-[#000000]">Create Account</Link></p>
                     </div>
                 </form>
                </div>
@@ -115,10 +90,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
             {/* end */}
             </div>
                 </div>
-            )}
 
-            <SignUp showSignup={showSignup} handleSignUpModal={handleSignUpModal}/>
-            <ForgotPassword forgotPassword={forgotPassword} handleForgotPassword={handleForgotPassword}/>
         </>
     )
 }

@@ -1,36 +1,22 @@
-import React, { useEffect } from 'react';
+'use client'
+
+import React from 'react';
 import left from "@/public/svg/left.svg";
 import envelope from "@/public/svg/Envelope.svg";
 import Image from 'next/image';
+import Link from 'next/link';
 
-interface ForgotPasswordProps {
-    forgotPassword : boolean;
-    handleForgotPassword : () => void;
-}
-
-const ForgotPassword : React.FC<ForgotPasswordProps> = ({forgotPassword, handleForgotPassword}) => {
-
-    useEffect(() => {
-        if(forgotPassword) {
-            document.body.classList.add('overflow-hidden');
-        } else {
-            document.body.classList.remove('overflow-hidden');
-        }
-
-        return () => {
-            document.body.classList.remove('overflow-hidden');
-        }
-    }, [forgotPassword])
+const ForgotPassword : React.FC = () => {
     return (
         <>
-            {
-                forgotPassword &&  (
                         <div className='bg-[#ffffff] p-6 lg:p-10 fixed z-20 top-0 left-0 w-full h-full'>
                                    {/* go back */}
                <div className="flex items-center gap-x-[8px]">
-                <button onClick={handleForgotPassword} className="text-[12px] font-normal flex items-center gap-x-2 text-[#000000]">
+                <button className="text-[12px] font-normal text-[#000000]">
+                    <Link href="/auth/login" className="flex items-center gap-x-2">
                 <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span> Go back
                     </span> 
+                    </Link>
                 </button>
                </div>
 
@@ -54,8 +40,7 @@ const ForgotPassword : React.FC<ForgotPasswordProps> = ({forgotPassword, handleF
                 <button className='bg-[#000000] py-[16px] px-[54px] text-[#ffffff] w-full rounded-[62px]'>Send OTP</button>
                </div>
             </div>
-                )
-            }
+            
         </>
     )
 }

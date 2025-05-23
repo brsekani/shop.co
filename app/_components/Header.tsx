@@ -9,17 +9,11 @@ import search1 from "@/public/svg/search1.svg";
 import hambugger from "@/public/svg/hambugger.svg";
 import Link from "next/link";
 import { useSearchStore } from "../store/searchStore";
-import Login from "./Login";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { searchOpen, setSearchOpen } = useSearchStore();
-  const [showLogin, setShowLogin] = useState(false);
-
-  const handleLogin = () => {
-    setShowLogin(prev => !prev)
-  }
-
+ 
   const handleOpenSearch = () => {
     if (menuOpen) setMenuOpen(false); // Close menu if it's open
     setSearchOpen((prev) => !prev); // Toggle search
@@ -101,8 +95,11 @@ export default function Header() {
               <Link href={"/cart"}>
                 <Image src={cart} alt="cart" className="cursor-pointer" />
               </Link>
-              <button onClick={handleLogin}>
+              <button 
+              >
+                <Link href="/auth/login">
               <Image src={profile} alt="profile" className="cursor-pointer" />
+                </Link>
               </button>
             </div>
           </div>
@@ -146,7 +143,6 @@ export default function Header() {
       </div>
     </div>
 
-    <Login showLogin={showLogin} handleLogin={handleLogin}/>
   </>
   );
 }
