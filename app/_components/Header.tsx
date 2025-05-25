@@ -6,6 +6,7 @@ import cart from "@/public/svg/cart.svg";
 import profile from "@/public/svg/profile.svg";
 import search from "@/public/svg/search.svg";
 import search1 from "@/public/svg/search1.svg";
+import xmark from "@/public/svg/xmark.svg";
 import hambugger from "@/public/svg/hambugger.svg";
 import Link from "next/link";
 import { useSearchStore } from "../store/searchStore";
@@ -26,16 +27,21 @@ export default function Header() {
 
   return (
     <>
-    <div className="fixed top-0 left-0 z-10 h-fit w-full flex items-center justify-between flex-col">
-      <div className="w-full mx-auto max-w-full">
+    <div className="fixed top-0 left-0 z-10 h-fit w-full flex items-center justify-between flex-col">      
         {/* Dark header */}
-        <div className="flex items-center w-full py-[9px] md:h-[38px] md:text-[14px] gap-x-1 justify-center text-white text-[12px] bg-black h-[34px]">
-          <h5>Sign up and get 20% off to your first order. </h5>
-          <Link href="" className="underline cursor-pointer">
+        <div className="grid place-items-center w-full py-[9px] md:h-[38px] md:text-[14px] text-white text-[12px] bg-black h-[34px]">
+          <div className="flex items-center justify-between w-full mx-auto lg:max-w-[1240px]">
+          <div className="flex items-center gap-x-1 mx-auto">
+          <h5 className="">Sign up and get 20% off to your first order. </h5>
+          <Link href="/auth/signup" className="underline cursor-pointer">
             Sign Up Now
           </Link>
-          <span></span>
-        </div>
+          </div>
+          <button>
+            <Image src={xmark} alt="cancel image" className="text-[#ffffff] hidden lg:block w-[13.13px] h-[13.13px]"/>
+          </button>
+           </div>
+          </div>
 
         {/* nav header */}
         <div className="w-full px-4 py-3 lg:py-6 bg-white">
@@ -49,13 +55,13 @@ export default function Header() {
                 onClick={handleOpenMenu}
               />
               <Link href={"/"}>
-                <h1 className="text-[32px] leading-[38.4px] font-bold cursor-pointer">
+                <h1 className="text-[32px] lg:text-[30px] xl:text-[32px] leading-[38.4px] font-bold cursor-pointer">
                   SHOP.CO
                 </h1>
               </Link>
             </div>
 
-            <ul className="sm:flex items-center flex-row gap-6 text-nowrap hidden">
+            <ul className="sm:flex items-center flex-row gap-6 lg:gap-4 xl:gap-6 text-nowrap hidden">
               <li className="cursor-pointer text-[16px] leading-[21.6px] text-[#000000]">
                 Shop
               </li>
@@ -71,7 +77,7 @@ export default function Header() {
             </ul>
 
             {/* Desktop Search Bar */}
-            <div className="w-full max-w-[577px] h-12 relative lg:block hidden">
+            <div className="w-full max-w-[577px] lg:max-w-[480px] xl:max-w-[577px] h-12 relative lg:block hidden">
               <input
                 className="w-full h-full bg-[#F0F0F0] rounded-[62px] pl-12 pr-6 outline-none"
                 type="text"
@@ -141,8 +147,6 @@ export default function Header() {
           </li>
         </ul>
       </div>
-    </div>
-
   </>
   );
 }

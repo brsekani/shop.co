@@ -12,7 +12,7 @@ const Login : React.FC = () => {
 
     return (
         <>
-            <div className="bg-white h-full fixed z-20 top-0 left-0 w-full">
+            <div className="bg-white h-full mt-48 fixed z-20 top-0 left-0 w-full">
                 {/* Desktop view */}
                 <div className="grid md:grid-cols-[1fr,1fr]">
                 {/* mobile */}
