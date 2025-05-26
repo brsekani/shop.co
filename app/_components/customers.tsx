@@ -65,9 +65,9 @@ const Customers = () => {
               {reviews.map((review) => (
                 <CarouselItem
                   key={review.id}
-                  className="sm:basis-1/2 lg:basis-1/3 md:mr-6 lg:mr-0"
+                  className="sm:basis-1/2 md:basis-1/3 md:mr-6 lg:mr-0"
                 >
-                  <div className="border border-[#0000001A] rounded-[20px] p-6 w-full sm:w-[300px] md:w-[310px] lg:mr-0 lg:w-350px xl:w-[400px]">
+                  <div className="border border-[#0000001A] rounded-[20px] p-6 w-full lg:mr-0">
                     {/* Star Ratings */}
                     <div className="flex gap-1 mb-3">
                       {[...Array(5)].map((_, i) => (
