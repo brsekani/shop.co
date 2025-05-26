@@ -25,12 +25,11 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
 
     return (
         <>
-        {showLogin && (
-            <div className="bg-white h-auto fixed z-20 top-0 left-0 w-full">
+            <div className="bg-white h-full mt-48 fixed z-20 top-0 left-0 w-full">
                 {/* Desktop view */}
                 <div className="grid md:grid-cols-[1fr,1fr]">
                 {/* mobile */}
-                <div className="p-6 lg:px-16">
+                <div className="py-[60px] px-[24px] lg:px-16">
                     {/* go back */}
                <div className="flex items-center gap-x-[8px]">
                 <button  onClick={handleLogin} className="text-[12px] font-normal flex items-center gap-x-2 text-[#000000]">
@@ -102,7 +101,7 @@ const Login : React.FC<LoginProps> = ({ showLogin, handleLogin }) => {
             {/* end */}
             </div>
                 </div>
-            )}
+            {/* )} */}
         </>
     )
 }
