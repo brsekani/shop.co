@@ -37,7 +37,7 @@ const ForgotPassword : React.FC = () => {
              <div className="flex items-center gap-x-[8px]">
              <button className="text-[12px] font-normal text-[#000000]">
              <Link href="/auth/login" className="flex items-center gap-x-2">
-                <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span> Go back
+                <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span className="text-[12px] font-normal text-[#000000] leading-[100%]"> Go back
                     </span> 
             </Link>
         </button>
