@@ -90,7 +90,7 @@ const Login : React.FC = () => {
                     <input type="password" name=""  value={values.password} 
                     onChange={handleChange} 
                     onBlur={handleBlur} placeholder="Enter your password" id="password" className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px]  ${errors.password && touched.password ? 'input-error' : " "}`}/>
-                    <Image src={eye} alt="eye svg" className="absolute top-[35%] right-5"/>
+                    <Image src={eye} alt="eye svg" className="absolute top-[30%] right-5"/>
                         {errors.password && touched.password && <p className="error">{errors.password}</p>}
                         </div>
                     </div>

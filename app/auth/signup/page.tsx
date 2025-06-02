@@ -43,13 +43,13 @@ const SignUp : React.FC = () => {
         <>
             <div className="bg-white h-full fixed z-20 top-0 left-0 w-full">
                 {/* Desktop view */}
-                <div className="grid md:grid-cols-[1fr,1fr] lg:overflow-y-auto">
+                <div className="grid md:grid-cols-[1fr,1fr]">
                 {/* mobile */}
                 <div className="lg:px-[60px] px-[24px]">
                     {/* go back */}
-               <div className="flex items-center gap-x-[8px] pb-[44px] pt-[60px]">
+               <div className="flex items-center gap-x-[8px] pb-[44px] pt-[24px]">
                 <button className="text-[12px] font-normal text-[#000000]">
-                    <Link href="/"  className=" flex items-center gap-x-2">
+                    <Link href="/auth/login"  className=" flex items-center gap-x-2">
                     <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span className="text-[12px] font-normal text-[#000000] leading-[100%]"> Go back
                     </span> 
                     </Link>
@@ -132,9 +132,8 @@ const SignUp : React.FC = () => {
 
             <div className="hidden md:block bg-[#F2F0F1]"> 
                 <div className="flex items-start relative h-[663px] w-[712px]">
-                    <div>
-
-                <Image src={heroImage} alt="hero image" className=""/>
+                    <div className=""> 
+                         <Image width={712} height={663} src={heroImage} alt="hero image" className="object-cover"/>
                     </div>
                   <Image
               src={star} 
