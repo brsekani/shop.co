@@ -16,10 +16,10 @@ export default function Hero() {
       <div className="w-full md:h-[663px] cursor-default">
         <div className="lg:max-w-[1240px]  mx-auto md:h-[663px] h-fit flex flex-col md:flex-row justify-between gap-10">
           {/* Left section */}
-          <div className="w-full pt-8 lg:pt-0 lg:w-1/2 h-full flex items-center lg:items-start flex-col justify-center gap-12 px-4 md:px-4 lg:px-0">
+          <div className="w-full pt-8 lg:pt-0 lg:px-4 lg:w-1/2 h-full flex items-center lg:items-start flex-col justify-center gap-12 px-4 md:px-4 xl:px-0">
             {/* Add any content here if needed */}
             <div className="flex flex-col md:gap-8 gap-5 items-start">
-              <h1 className="text-[32px] lg:text-[64px] leading-[40px] lg:leading-[64px] font-bold">
+              <h1 className="text-[32px] lg:text-[56px] xl:text-[64px] leading-[40px] lg:leading-[64px] font-bold">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
               </h1>
               <p className="text-[14px] lg:text-[16px] leading-[22px] text-[#00000099]">
@@ -35,7 +35,7 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="flex flex-row md:gap-8 gap-[27px] h-[74px] items-center justify-center flex-wrap">
+            <div className="flex flex-row md:gap-8 gap-[27px] lg:-mt-8 h-[74px] lg:h-[50px] items-center justify-center flex-wrap">
               <div className="flex flex-col gap-0">
                 <h1 className="text-[24px] lg:text-[40px] leading-[32.4px] lg:leading-[54px] font-bold">
                   200+
@@ -60,7 +60,7 @@ export default function Hero() {
               {/* Hide the HR when wrapping */}
               <hr className="border-l-[2px] border-[#0000001A] my-4 h-full hidden md:block" />
 
-              <div className="flex flex-col gap-0">
+              <div className="flex flex-col gap-0 lg:-mt-8 xl:-mt-0">
                 <h1 className="text-[24px] lg:text-[40px] leading-[32.4px] lg:leading-[54px] font-bold">
                   30,000+
                 </h1>
