@@ -24,9 +24,9 @@ function Successful () {
                         <h2 className="text-[20px] font-bold leading-[100%] pb-[12px] w-[342px] mx-auto text-center lg:w-full text-[#000000]">PASSWORD RESET <br className="md:hidden"/> SUCCESSFULLY</h2>
                         <p className="text-center text-[12px] leading-[100%] font-normal pb-[22px] text-[#00000099]">You can now log in to your account using your new password</p>
 
-                        {/* <Link href="/auth/login"> */}
-                                                <button type="submit" className="bg-[#000000] grid place-items-center text-[14px] text-[#ffffff] leading-[100%] lg:max-w-[803px] w-full mx-auto font-medium rounded-[62px] px-[54px] py-[16px]">Login</button>
-                        {/* </Link> */}
+                        <Link href="/auth/login">
+                             <button type="submit" className="bg-[#000000] grid place-items-center text-[14px] text-[#ffffff] leading-[100%] lg:max-w-[803px] w-full mx-auto font-medium rounded-[62px] px-[54px] py-[16px]">Login</button>
+                        </Link>
                     </div>
                </div>
             </div>

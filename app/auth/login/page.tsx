@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react"
+import React, { useState } from "react"
 import left from "@/public/svg/left.svg";
 import heroImage from "@/public/images/shopHero.jpeg";
 import star from "@/public/svg/star.svg";
 import eye from "@/public/svg/eye.svg";
+import eyeSlash from "@/public/svg/eyeSlash.svg";
 import { useFormik } from 'formik';
-// import { basicSchema } from "@/app/schemas";
 import { FormikHelpers } from "formik";
-import { loginSchema } from "@/app/schemas/loginSchema";
+import { loginSchema } from "@/app/_components/Schemas";
 
 interface LoginValues {
     email : string;
@@ -26,6 +26,8 @@ const onSubmit = async (
 };
 
 const Login : React.FC = () => {
+    const [show, setShow] = useState(false);
+
     const {values, errors, touched, handleBlur, isSubmitting, handleChange, handleSubmit} = useFormik({
             initialValues : {
                 email : "",
@@ -35,6 +37,11 @@ const Login : React.FC = () => {
         validationSchema : loginSchema,
         onSubmit,
     });
+
+    const handleShow = (e:  React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        setShow(prev => !prev);
+    }
     
     return (
         <>
@@ -44,13 +51,13 @@ const Login : React.FC = () => {
                 {/* mobile */}
                 <div className="lg:px-[60px] px-[24px]">
                     {/* go back */}
-               <div className="flex items-center gap-x-[8px] pb-[47.5px] pt-[60px]">
-                <button className="text-[12px] font-normal text-[#000000]">
-                    <Link href="/"  className=" flex items-center gap-x-2">
+               <div className="pb-[47.5px] pt-[60px]">
+                    <Link href="/" >
+                    <button className="text-[12px] font-normal text-[#000000] flex items-center gap-x-[8px]">
                     <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span className="text-[12px] font-normal text-[#000000] leading-[100%]"> Go back
                     </span> 
-                    </Link>
                 </button>
+                    </Link>
                </div>
 
                <div>
@@ -67,7 +74,7 @@ const Login : React.FC = () => {
 
                 {/* form input & label */}
                <div className="py-[22px]">
-                <form onSubmit={handleSubmit} action="" className="flex flex-col gap-y-[24px]">
+                <form onSubmit={handleSubmit} action="" className="flex flex-col gap-y-[18px]">
                     {/* email */}
                     <div className="flex flex-col">
                     <label htmlFor="Email" className="pb-[4px] text-[14px] font-normal leading-[100%]">Email address</label>
@@ -76,7 +83,7 @@ const Login : React.FC = () => {
                     onChange={handleChange} 
                     onBlur={handleBlur}
                     type="text" name="" placeholder="Enter your email address" id="email" className={`placeholder:text-[12px] placeholder:
-                    leading-[100%] rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px] ${errors.email && touched.email ? 'input-error' : " "}`}/>
+                    leading-[100%] rounded-[4px] border border-[#E5E5E5] py-[10px] px-[12px] ${errors.email && touched.email ? 'input-error' : " "}`}/>
                     {errors.email && touched.email && <p className="error">{errors.email}</p>}
                     </div>
 
@@ -84,20 +91,29 @@ const Login : React.FC = () => {
                     <div className="flex flex-col">
                         <div className="flex items-center justify-between">
                         <label htmlFor="password" className="pb-[4px] text-[14px] font-normal leading-[100%]">Password</label>
-                        <Link  href="/auth/forgot-password" className="underline text-[#000000] font-bold text-[12px] pb-1 leading-[100%]">Forgot Password</Link>
+                        <Link  href="/auth/forgot-password">
+                        <button className="underline text-[#000000] font-bold text-[12px] pb-1 leading-[100%]">
+                        Forgot Password
+                        </button>
+                        </Link>
                         </div>
                         <div className="relative">
-                    <input type="password" name=""  value={values.password} 
+                    <input type={show ? "text" : "password"} name=""  value={values.password} 
                     onChange={handleChange} 
-                    onBlur={handleBlur} placeholder="Enter your password" id="password" className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px]  ${errors.password && touched.password ? 'input-error' : " "}`}/>
-                    <Image src={eye} alt="eye svg" className="absolute top-[30%] right-5"/>
-                        {errors.password && touched.password && <p className="error">{errors.password}</p>}
+                    onBlur={handleBlur} placeholder="Enter your password" id="password" className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[10px] px-[12px]  ${errors.password && touched.password ? 'input-error' : " "}`}/>
+                    <button onClick={handleShow} type="button" className="absolute top-[20%] cursor-pointer right-5">
+                        {show ? 
+                        <Image src={eye} alt="eye svg" className="w-[20px] h-[20px]"/> : 
+                        <Image src={eyeSlash} alt="eyeSlash svg" className="w-[20px] h-[20px]"/> 
+                        }
+                    </button>
+                        {errors.password && touched.password && <p className="error">{errors && errors.password}</p>}
                         </div>
                     </div>
 
                     {/* checkbox */}
-                    <div className="flex items-center justify-start gap-x-2 lg:gap-x-4">
-                    <input type="checkbox" name="checkbox" id="checkbox" />
+                    <div className="flex items-center justify-start gap-x-2">
+                    <input type="checkbox" name="checkbox" id="checkbox" className="focus:bg-black"/>
                     <label htmlFor="Remember me" className="text-[12px] text-[#00000099] font-normal w-[88px] h-[16px]">Remember me</label>
                     </div>
 

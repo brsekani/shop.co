@@ -6,8 +6,8 @@ import Link from 'next/link';
 import left from '@/public/svg/left.svg';
 import envelope from '@/public/svg/Envelope.svg';
 import { useFormik } from 'formik';
-import { otpSchema } from '@/app/schemas/verifyOtpSchema';
 import { useRouter } from 'next/navigation';
+import { otpSchema } from '@/app/_components/Schemas';
 
 interface OtpValues {
   otp1: string;
@@ -90,13 +90,13 @@ const VerifyOtp: React.FC = () => {
   return (
     <div className="bg-[#ffffff] p-6 lg:p-10 fixed z-20 top-0 left-0 w-full h-full">
       {/* Go Back */}
-      <div className="flex items-center gap-x-[8px]">
-        <button className="text-[12px] font-normal text-[#000000]">
+      <div>
           <Link href="/auth/forgot-password" className="flex items-center gap-x-2">
+        <button className="text-[12px] font-normal text-[#000000] flex items-center gap-x-[8px]">
             <Image src={left} alt="arrow left" className="w-[10.67px]" />
             <span className="text-[12px] font-normal text-[#000000] leading-[100%]">Go back</span>
-          </Link>
         </button>
+          </Link>
       </div>
       <div className="mt-12 lg:max-w-[803px] mx-auto">
         <div className="grid place-items-center mb-8">

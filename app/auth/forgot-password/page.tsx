@@ -6,7 +6,7 @@ import envelope from "@/public/svg/Envelope.svg";
 import Image from 'next/image';
 import Link from 'next/link';
 import { FormikHelpers, useFormik } from 'formik';
-import { forgotPasswordSchema } from '@/app/schemas/forgotpasswordSchema';
+import { forgotPasswordSchema } from '@/app/_components/Schemas';
 
 interface forgotpasswordValues {
     email : string;
@@ -35,12 +35,12 @@ const ForgotPassword : React.FC = () => {
             <div className='bg-[#ffffff] p-6 lg:p-10 fixed z-20 top-0 left-0 w-full h-full'>
                      {/* go back */}
              <div className="flex items-center gap-x-[8px]">
-             <button className="text-[12px] font-normal text-[#000000]">
-             <Link href="/auth/login" className="flex items-center gap-x-2">
+             <Link href="/auth/login">
+             <button className="text-[12px] flex items-center gap-x-2 font-normal text-[#000000]">
                 <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span className="text-[12px] font-normal text-[#000000] leading-[100%]"> Go back
                     </span> 
-            </Link>
         </button>
+            </Link>
                </div>
 
                <div className='mt-12 lg:max-w-[803px] mx-auto'>
@@ -55,7 +55,7 @@ const ForgotPassword : React.FC = () => {
                     <form action="" onSubmit={handleSubmit}>
                         <div className='flex flex-col mb-6'> 
                             <label htmlFor="email" className='font-noraml leading-[100%] text-[14px] text-[#000000] tracking-wide pb-1'>Email address</label>
-                            <input type="email" id='email' onChange={handleChange} onBlur={handleBlur} value={values.email} placeholder='Enter your email address' className='border text-[13x] border-[#E5E5E5] placeholder:text-[#00000099] rounded-[4px] py-[14px] px-[12px]'/>
+                            <input type="email" id='email' onChange={handleChange} onBlur={handleBlur} value={values.email} placeholder='Enter your email address' className='border text-[13x] border-[#E5E5E5] placeholder:text-[#00000099] rounded-[4px] py-[10px] px-[12px]'/>
                             {errors.email && touched.email && <p className="error">{errors.email}</p>}
                         </div>
                     </form>

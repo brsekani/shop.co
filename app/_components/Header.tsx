@@ -101,12 +101,12 @@ export default function Header() {
               <Link href={"/cart"}>
                 <Image src={cart} alt="cart" className="cursor-pointer" />
               </Link>
+              <Link href="/auth/login">          
               <button 
               >
-                <Link href="/auth/login">
               <Image src={profile} alt="profile" className="cursor-pointer" />
-                </Link>
               </button>
+                </Link>
             </div>
           </div>
         </div>

@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react"
+import React, { useState } from "react"
 import left from "@/public/svg/left.svg";
 import heroImage from "@/public/images/shopHero.jpeg";
 import star from "@/public/svg/star.svg";
 import eye from "@/public/svg/eye.svg";
+import eyeSlash from "@/public/svg/eyeSlash.svg";
 import { useFormik } from 'formik';
 import { FormikHelpers } from "formik";
-import { signupSchema } from "@/app/schemas/signupSchema";
+import { signupSchema } from "@/app/_components/Schemas";
 
 interface signupValues {
     fullname : string;
@@ -27,6 +28,11 @@ const onSubmit = async (
 };
 
 const SignUp : React.FC = () => {
+    const [show, setShow] = useState({
+        password : false, 
+        confirmPassword : false
+    })
+
     const {values, errors, touched, handleBlur, isSubmitting, handleChange, handleSubmit} = useFormik({
             initialValues : {
                 fullname : "",
@@ -38,7 +44,17 @@ const SignUp : React.FC = () => {
         validationSchema : signupSchema,
         onSubmit,
     });
-    
+
+    const handleShow = (field: "password" | "confirmPassword") => (
+  e: React.MouseEvent<HTMLButtonElement>
+) => {
+  e.preventDefault();
+  setShow(prev => ({
+    ...prev,
+    [field]: !prev[field],
+  }));
+};
+        
     return (
         <>
             <div className="bg-white h-full fixed z-20 top-0 left-0 w-full">
@@ -47,7 +63,7 @@ const SignUp : React.FC = () => {
                 {/* mobile */}
                 <div className="lg:px-[60px] px-[24px]">
                     {/* go back */}
-               <div className="flex items-center gap-x-[8px] pb-[44px] pt-[24px]">
+               <div className="flex items-center gap-x-[8px] pb-[44px] pt-[60px]">
                 <button className="text-[12px] font-normal text-[#000000]">
                     <Link href="/auth/login"  className=" flex items-center gap-x-2">
                     <Image src={left} alt="arrow right" className="w-[10.67px]"/> <span className="text-[12px] font-normal text-[#000000] leading-[100%]"> Go back
@@ -69,7 +85,7 @@ const SignUp : React.FC = () => {
                <div><hr /></div>
 
                 {/* form input & label */}
-               <div className="py-[22px]">
+               <div className="py-[12px]">
                 <form onSubmit={handleSubmit} action="" className="flex flex-col gap-y-[18px]">
                     {/* fullname */}
                     <div className="flex flex-col">
@@ -79,7 +95,7 @@ const SignUp : React.FC = () => {
                     onChange={handleChange} 
                     onBlur={handleBlur}
                     type="text" name="fullname" placeholder="Enter your fullname" id="fullname" className={`placeholder:text-[12px] placeholder:
-                    leading-[100%] rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px] ${errors.fullname && touched.fullname ? 'input-error' : " "}`}/>
+                    leading-[100%] rounded-[4px] border border-[#E5E5E5] py-[10px] px-[12px] ${errors.fullname && touched.fullname ? 'input-error' : " "}`}/>
                     {errors.fullname && touched.fullname && <p className="error">{errors.fullname}</p>}
                     </div>
 
@@ -91,34 +107,48 @@ const SignUp : React.FC = () => {
                     onChange={handleChange} 
                     onBlur={handleBlur}
                     type="text" name="" placeholder="Enter your email address" id="email" className={`placeholder:text-[12px] placeholder:
-                    leading-[100%] rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px] ${errors.email && touched.email ? 'input-error' : " "}`}/>
+                    leading-[100%] rounded-[4px] border border-[#E5E5E5] py-[10px] px-[12px] ${errors.email && touched.email ? 'input-error' : " "}`}/>
                     {errors.email && touched.email && <p className="error">{errors.email}</p>}
                     </div>
 
                     {/* password */}
                     <div className="flex flex-col">
-                        <label htmlFor="password" className="pb-[4px] text-[#000000] text-[14px] font-normal leading-[100%]">Password</label>
+                        <div className="flex items-center justify-between">
+                        <label htmlFor="password" className="pb-[4px] text-[14px] font-normal leading-[100%]">Password</label>
+                        </div>
                         <div className="relative">
-                    <input type="password" name=""  value={values.password} 
+                    <input type={show.password ? "text" : "password"} name=""  value={values.password} 
                     onChange={handleChange} 
-                    onBlur={handleBlur} placeholder="Enter your password" id="password" className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px]  ${errors.password && touched.password ? 'input-error' : " "}`}/>
-                    <Image src={eye} alt="eye svg" className="absolute top-[30%] right-5 w-[20px] h-[20px]"/>
-                        {errors.password && touched.password && <p className="error">{errors.password}</p>}
+                    onBlur={handleBlur} placeholder="Enter your password" id="password" className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[10px] px-[12px]  ${errors.password && touched.password ? 'input-error' : " "}`}/>
+                    <button onClick={handleShow('password')} type="button" className="absolute top-[20%] cursor-pointer right-5">
+                        {show.password ? 
+                        <Image src={eye} alt="eye svg" className="w-[20px] h-[20px]"/> : 
+                        <Image src={eyeSlash} alt="eyeSlash svg" className="w-[20px] h-[20px]"/> 
+                        }
+                    </button>
+                        {errors.password && touched.password && <p className="error">{errors && errors.password}</p>}
                         </div>
                     </div>
 
                     {/* confirm password */}
-                    <div className="flex flex-col">
-                        <label htmlFor="confirm-password" className="pb-[4px] text-[#000000] text-[14px] font-normal leading-[100%]">Confirm password</label>
+                        <div className="flex flex-col">
+                        <div className="flex items-center justify-between">
+                        <label htmlFor="confirm-password" className="pb-[4px] text-[14px] font-normal leading-[100%]">Password</label>
+                        </div>
                         <div className="relative">
-                        <input type="password" name="confirmPassword" value={values.confirmPassword} 
-                         onChange={handleChange} 
-                        onBlur={handleBlur} placeholder="Retype your password" id="confirm-password" className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px]  ${errors.confirmPassword && touched.confirmPassword ? 'input-error' : " "}`}/>
-                        <Image src={eye} alt="eye svg" className="absolute top-[30%] right-5 w-[20px] h-[20px]"/>
-                            {errors.confirmPassword && touched.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+                    <input type={show.confirmPassword ? "text" : "password"} name="confirmPassword"  value={values.confirmPassword} 
+                    onChange={handleChange} 
+                    onBlur={handleBlur} placeholder="Retype your password" id="confirmPassword" className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[10px] px-[12px]  ${errors.password && touched.password ? 'input-error' : " "}`}/>
+                    <button onClick={handleShow('confirmPassword')} type="button" className="absolute top-[20%] cursor-pointer right-5">
+                        {show.confirmPassword ? 
+                        <Image src={eye} alt="eye svg" className="w-[20px] h-[20px]"/> : 
+                        <Image src={eyeSlash} alt="eyeSlash svg" className="w-[20px] h-[20px]"/> 
+                        }
+                    </button>
+                        {errors.confirmPassword && touched.confirmPassword && <p className="error">{errors && errors.confirmPassword}</p>}
                         </div>
                     </div>
-
+                
                     {/* continue button */}
                     <button type="submit" disabled={isSubmitting} className="bg-[#000000] text-[14px] text-[#ffffff] leading-[100%] font-medium rounded-[62px] px-[54px] py-[16px]">Continue</button>
 
