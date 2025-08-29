@@ -5,6 +5,7 @@ import Image from "next/image";
 import cart from "@/public/svg/cart.svg";
 import profile from "@/public/svg/profile.svg";
 import search from "@/public/svg/search.svg";
+import cancel from "@/public/svg/cancel.svg";
 import search1 from "@/public/svg/search1.svg";
 import hambugger from "@/public/svg/hambugger.svg";
 import Link from "next/link";
@@ -25,7 +26,7 @@ export default function Header() {
   };
 
   return (
-    <div className="fixed top-0 left-0 z-10 h-fit w-full flex items-center justify-between flex-col">
+    <div className="fixed top-0 left-0 z-50 h-fit w-full flex items-center justify-between flex-col">
       <div className="w-full mx-auto max-w-full">
         {/* Dark header */}
         <div className="flex items-center w-full py-[9px] md:h-[38px] md:text-[14px] gap-x-1 justify-center text-white text-[12px] bg-black h-[34px]">
@@ -33,7 +34,9 @@ export default function Header() {
           <Link href="" className="underline cursor-pointer">
             Sign Up Now
           </Link>
-          <span></span>
+          <span>
+            <Image src={cancel} alt="cancel culture"/>
+          </span>
         </div>
 
         {/* nav header */}

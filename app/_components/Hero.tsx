@@ -28,8 +28,8 @@ export default function Hero() {
                 your sense of style.
               </p>
 
-              <Link href={"/category"}>
-                <button className="w-[160px] lg:w-[210px] h-[46px] lg:h-[52px] rounded-[62px] bg-[#000000] text-[#FFFFFF] leading-[21.6px] text-[14px] lg:text-[16px] font-medium mt-1 md:mt-0">
+              <Link href={"/category"} className="w-full">
+                <button className="w-full md:w-[160px] lg:w-[210px] h-[46px] lg:h-[52px] rounded-[62px] bg-[#000000] text-[#FFFFFF] leading-[21.6px] text-[14px] lg:text-[16px] font-medium mt-1 md:mt-0">
                   Shop now
                 </button>
               </Link>
