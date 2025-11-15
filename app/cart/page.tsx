@@ -8,6 +8,7 @@ import cartImgThree from "@/public/images/cartImg3.png";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import Order from "../_components/Order";
+import MainLayout from "../_components/MainLayout";
 
 export default function Page() {
   const [products, setProducts] = useState([
@@ -58,7 +59,7 @@ export default function Page() {
   };
 
   return (
-    <>
+    <MainLayout>
       <div className="mt-[98px] lg:mt-[136px] mx-auto pt-4 pb-10">
         <div className="mx-4 lg:max-w-[1240px] lg:mx-auto">
           {/* header */}
@@ -164,6 +165,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </>
+    </MainLayout>
   );
 }

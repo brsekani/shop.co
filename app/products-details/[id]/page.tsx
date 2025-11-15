@@ -16,6 +16,7 @@ import shopTF from "@/public/images/shopTF_prev_ui.png";
 import shopTB from "@/public/images/shopTB_prev_ui.png";
 import shopTFull from "@/public/images/shopTFull_prev_ui.png";
 import Colors from "@/app/_components/colors";
+import MainLayout from "@/app/_components/MainLayout";
 
 const Shop = () => {
   const [activeImage, setActiveImage] = useState(0);
@@ -41,7 +42,7 @@ const Shop = () => {
   ];
 
   return (
-    <>
+    <MainLayout>
       <div className="mt-[98px] lg:mt-[136px] pt-6 pb-10">
         {/* container  */}
         <div className="mx-4 lg:mx-auto lg:max-w-[1240px]">
@@ -207,7 +208,7 @@ const Shop = () => {
           </div>
         </div>
       </div>
-    </>
+    </MainLayout>
   );
 };
 

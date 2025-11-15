@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import left from "@/public/svg/left.svg";
 import heroImage from "@/public/images/shopHero.jpeg";
 import star from "@/public/svg/star.svg";
 import eye from "@/public/svg/eye.svg";
+import eyeSlash from "@/public/svg/eyeSlash.svg";
 import { useFormik } from "formik";
 // import { basicSchema } from "@/app/schemas";
-import { FormikHelpers } from "formik";
+
 import { loginSchema } from "@/app/_components/Schemas";
 
 interface LoginValues {
@@ -17,15 +18,13 @@ interface LoginValues {
   password: string;
 }
 
-const onSubmit = async (
-  values: LoginValues,
-  actions: FormikHelpers<LoginValues>
-) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
-};
-
 const Login: React.FC = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   const {
     values,
     errors,
@@ -34,7 +33,7 @@ const Login: React.FC = () => {
     isSubmitting,
     handleChange,
     handleSubmit,
-  } = useFormik({
+  } = useFormik<LoginValues>({
     initialValues: {
       email: "",
       password: "",
@@ -43,6 +42,7 @@ const Login: React.FC = () => {
     validationSchema: loginSchema,
     onSubmit(values) {
       console.log(values);
+      // router.push("/dashboard");
     },
   });
 
@@ -54,30 +54,30 @@ const Login: React.FC = () => {
           {/* mobile */}
           <div className="lg:px-[60px] px-[24px]">
             {/* go back */}
-            <div className="flex items-center gap-x-[8px] pb-[47.5px] pt-[60px]">
-              <button className="text-[12px] font-normal text-[#000000]">
+            <div className="flex items-center gap-x-[8px] pb-[44px] pt-[60px]">
+              <button className="text-[12px] font-normal text-[#000000] leading-[100%]">
                 <Link href="/" className=" flex items-center gap-x-2">
                   <Image src={left} alt="arrow right" className="w-[10.67px]" />{" "}
                   <span className="text-[12px] font-normal text-[#000000] leading-[100%]">
                     {" "}
-                    Go back
+                    Go Back
                   </span>
                 </Link>
               </button>
             </div>
 
             <div>
-              <h3 className="font-bold mb-[12px] text-[#000000] w-[342px] h-[10px] text-[14px] leading-[100%]">
+              <h3 className="font-bold mb-[12px] text-[#000000] w-[342px] h-[10px] text-[14px] leading-[100%] font-montserrat">
                 WELCOME BACK
               </h3>
-              <p className="text-[#00000099] text-[12px] leading-[100%] W-[269px] h-[16px] font-normal">
+              <p className="text-[#00000099] text-[12px] leading-[100%] max-w-[269px] w-full font-normal">
                 Sign in to access your account and track your style
               </p>
               <div className="flex flex-col my-[22px] gap-y-3 lg:flex-row lg:gap-x-5">
-                <button className="bg-[#0000000F] rounded-[30px] px-[28px] py-[20px] text-[12px] font-normal leading-[100%] tracking-wider">
+                <button className="bg-[#0000000F] rounded-[30px] px-[28px] h-[43px] text-[12px] font-normal leading-[100%]  font-montserrat">
                   Continue with Google
                 </button>
-                <button className="bg-[#0000000F] rounded-[30px] px-[28px] py-[20px] text-[12px] font-normal leading-[100%] tracking-wider">
+                <button className="bg-[#0000000F] rounded-[30px] px-[28px] h-[43px] text-[12px] font-normal leading-[100%]  font-montserrat">
                   Continue with --
                 </button>
               </div>
@@ -93,12 +93,12 @@ const Login: React.FC = () => {
               <form
                 onSubmit={handleSubmit}
                 action=""
-                className="flex flex-col gap-y-[24px]"
+                className="flex flex-col gap-[24px]"
               >
                 {/* email */}
                 <div className="flex flex-col">
                   <label
-                    htmlFor="Email"
+                    htmlFor="email"
                     className="pb-[4px] text-[14px] font-normal leading-[100%]"
                   >
                     Email address
@@ -108,17 +108,17 @@ const Login: React.FC = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     type="text"
-                    name=""
+                    name="email"
                     placeholder="Enter your email address"
                     id="email"
-                    className={`placeholder:text-[12px] placeholder:
-                    leading-[100%] rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px] ${
+                    className={`placeholder:text-[12px] text-[12px] placeholder:
+                    leading-[100%] rounded-[4px] border border-[#E5E5E5] h-10 px-[12px] ${
                       errors.email && touched.email ? "input-error" : " "
                     }`}
                   />
-                  {errors.email && touched.email && (
-                    <p className="error">{errors.email}</p>
-                  )}
+                  <p className="text-[12px] text-[#fc8181]  transition-all duration-200">
+                    {touched.email && errors.email ? errors.email : "\u00A0"}
+                  </p>
                 </div>
 
                 {/* password */}
@@ -137,35 +137,47 @@ const Login: React.FC = () => {
                       Forgot Password
                     </Link>
                   </div>
-                  <div className="relative">
-                    <input
-                      type="password"
-                      name=""
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Enter your password"
-                      id="password"
-                      className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] py-[14px] px-[12px]  ${
-                        errors.password && touched.password
-                          ? "input-error"
-                          : " "
-                      }`}
-                    />
-                    <Image
-                      src={eye}
-                      alt="eye svg"
-                      className="absolute top-[30%] right-5"
-                    />
-                    {errors.password && touched.password && (
-                      <p className="error">{errors.password}</p>
-                    )}
+                  <div>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder="Enter your password"
+                        id="password"
+                        className={`placeholder:text-[#00000099] placeholder:text-[12px] placeholder:leading-[100%] w-full relative rounded-[4px] border border-[#E5E5E5] h-10 px-[12px]  ${
+                          errors.password && touched.password
+                            ? "input-error"
+                            : " "
+                        }`}
+                      />
+                      <Image
+                        src={showPassword ? eye : eyeSlash}
+                        alt="eye svg"
+                        className="absolute top-[25%] right-5 cursor-pointer w-[20px] h-[20px]"
+                        onClick={() => handleShowPassword()}
+                      />
+                    </div>
+
+                    <p className="text-[12px] text-[#fc8181] transition-all duration-200">
+                      {touched.password && errors.password
+                        ? errors.password
+                        : "\u00A0"}
+                    </p>
                   </div>
                 </div>
 
                 {/* checkbox */}
                 <div className="flex items-center justify-start gap-x-2 lg:gap-x-4">
-                  <input type="checkbox" name="checkbox" id="checkbox" />
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    id="checkbox"
+                    className="accent-black"
+                  />
+
                   <label
                     htmlFor="Remember me"
                     className="text-[12px] text-[#00000099] font-normal w-[88px] h-[16px]"
@@ -178,14 +190,14 @@ const Login: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#000000] text-[14px] text-[#ffffff] leading-[100%] font-medium rounded-[62px] px-[54px] py-[16px]"
+                  className="bg-[#000000] text-[14px] text-[#ffffff] leading-[100%] font-medium rounded-[62px] px-[54px] h-10"
                 >
                   Login
                 </button>
 
                 {/* others */}
                 <div className="w-full mx-auto">
-                  <p className="text-center font-normal lg:text-14px text-[#000000] leading-[100%]">
+                  <p className="text-center font-normal text-14px text-[#000000] leading-[100%]">
                     Don&apos;t have an account?{" "}
                     <Link
                       href="/auth/signup"
@@ -199,21 +211,21 @@ const Login: React.FC = () => {
             </div>
           </div>
 
-          <div className="hidden md:block bg-[#F2F0F1]">
-            <h2 className="text-[32px] font-bold leading-[100%] w-full text-[#000000] text-center mt-[60px]">
+          <div className="hidden  bg-[#F2F0F1] space-y-[120px] h-screen md:flex items-center flex-col">
+            <h2 className="text-[32px] font-[900] leading-[100%] w-full text-[#000000] text-center mt-[60px] font-montserrat">
               SHOP.CO
             </h2>
-            <div className="relative flex items-start">
-              <div>
-                <Image src={heroImage} alt="hero image" />
-              </div>
+
+            <div className="relative">
+              <Image src={heroImage} alt="hero image" />
               <Image
                 src={star}
                 alt="starIcon"
-                className="w-[104px] h-[116.53px] absolute top-[104.34px] left-[555px]"
+                className="w-[104px] h-[116.53px] absolute top-[120px] right-[62px]"
               />
             </div>
           </div>
+
           {/* end */}
         </div>
       </div>

@@ -8,8 +8,25 @@ type FilterProps = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+const colors = [
+  "#00C12B",
+  "#F50606",
+  "#F5DD06",
+  "#F57906",
+  "#06CAF5",
+  "#7D06F5",
+  "#F506A4",
+  "#FFFFFF",
+  "#000000",
+];
+
 const Filters: React.FC<FilterProps> = ({ setIsOpen }) => {
   const [activeSize, setActiveSize] = useState(4);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+  const toggleColor = (color: string) => {
+    setSelectedColor((prev) => (prev === color ? null : color));
+  };
 
   const hideFilter = () => {
     setIsOpen(false);
@@ -118,15 +135,26 @@ const Filters: React.FC<FilterProps> = ({ setIsOpen }) => {
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#00C12B]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F50606]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F5DD06]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F57906]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#06CAF5]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#7D06F5]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#F506A4]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#FFFFFF]"></div>
-            <div className="w-[37px] h-[37px] border-[2px] border-[#00000033] rounded-full bg-[#000000]"></div>
+            {colors.map((color, index) => {
+              const isSelected = selectedColor === color;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => toggleColor(color)}
+                  className={`
+              w-[37px] h-[37px] rounded-full border-2 
+              ${
+                isSelected
+                  ? "border-black ring-2 ring-offset-1 ring-black"
+                  : "border-[#00000033]"
+              } 
+              cursor-pointer transition-all duration-150
+            `}
+                  style={{ backgroundColor: color }}
+                />
+              );
+            })}
           </div>
         </div>
         {/* end of color section */}

@@ -5,15 +5,18 @@ import Hero from "./_components/Hero";
 import Selling from "./_components/Selling";
 import Browse from "./_components/Browse";
 import Customers from "./_components/customers";
+import MainLayout from "./_components/MainLayout";
 
 export default function Home() {
   return (
     <div className="">
-      <Hero />
-      <Arrivals />
-      <Selling />
-      <Browse />
-      <Customers />
+      <MainLayout>
+        <Hero />
+        <Arrivals />
+        <Selling />
+        <Browse />
+        <Customers />
+      </MainLayout>
     </div>
   );
 }
